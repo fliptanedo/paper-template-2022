@@ -1,0 +1,41 @@
+%!TEX root = paper.tex
+%% Update the above with the appropriate root
+
+\section{Code example}
+
+These are examples of the \texttt{listings} package for typesetting code. See Overleaf\footnote{\url{https://www.overleaf.com/learn/latex/Code_listing}} and tex.stackexchange\footnote{\url{https://tex.stackexchange.com/a/350242}} for discusisons.
+
+\subsection{Basic Example}
+\begin{pyin}
+print("Hello world")
+\end{pyin}
+
+\begin{pyprint}
+Hello world
+\end{pyprint}
+
+\subsection{Outputs and returned values}
+And here we also have a return value in the last line of the input cell.
+\begin{pyin}[labelOfTheSecondInput]
+def twicify(arg):
+    print("Received:", arg, "- Will double now...")
+    return 2 * arg
+twicify(1)
+\end{pyin}
+
+\begin{pyprint}
+Received: 1 - Will double now...
+\end{pyprint}
+
+\begin{pyout}
+2
+\end{pyout}
+
+\subsection{Referencing input}
+You can also reference the labeled input \ref{labelOfTheSecondInput}, from above.
+\begin{pyin}
+"and the counter will automatically do the right thing :)"
+\end{pyin}
+\begin{pyout}
+'and the counter will automatically do the right thing :)'
+\end{pyout}

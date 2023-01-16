@@ -93,3 +93,60 @@ The equations above are (glomped together)
 \end{itemize}
 
 The sections above are \cref{sec:macros,sec:cleveref,sec:figs,sec:tables}.
+
+\section{Other Best Practices}
+
+
+\subsection{Kerning: spacing between characters}
+Math operators have a natural spacing before and after depending on the context. In the following example, spaces indicate that the coefficient $a$ multiplies the logarithm of $b$:
+\begin{align}
+	a\log b && a\log(bc)
+\end{align}
+The space on either side of $\log$ indicate that $\log$ is a mathematical operator. The second example still has the space between $a$ and $\log$, but has no space between $\log$ and $(bc)$ because the parenthesis belongs to the mathematical function.\footnote{Example from \url{https://tex.stackexchange.com/a/140647}}
+
+You can use \textbackslash\texttt{operatorname} and \textbackslash\texttt{DeclareMathOperator} for functions that are not built in.
+
+\subsection{Upright characters}
+These come from the \acro{ISO 80000} standards for typesetting mathematics and physics.\footnote{See discussion in \url{https://tex.stackexchange.com/questions/14821/whats-the-proper-way-to-typeset-a-differential-operator}} It is not obvious to me that these are applicable to the typographical culture of physics, but the most important thing is to be consistent.
+\begin{itemize}
+	\item Units are always upright, \textmu m is a micrometer. You can use various unit packages to do this automatically. 
+	\item The base of the natural logarithm is upright $\mathrm{e}^{i\pi}$ versus $e^{i\pi}$.
+	\item The differential is an operator so it should be upright. I have macros for this: $dx$ vs.~$\D{x}$ and $\dbar p$ vs.~$\Dbar{p}$. The \texttt{physics} package has macros for this. 
+\end{itemize}
+There is a historical discussion on hsm.stackexchange\footnote{\url{https://hsm.stackexchange.com/questions/6727/fracdydx-versus-frac-mathrm-dy-mathrm-dx}}.
+
+
+\subsection{Ranges}
+
+Hyphens, en dashes, em dashes, and minus signs in math mode are all grammatically different.
+\begin{itemize}
+	\item En dashes replace hyphens in a compound adjective where one of the elements is a two-word compound: `post--Cold War era.'\footnote{From \url{https://www.merriam-webster.com/words-at-play/em-dash-en-dash-how-to-use}}
+	\item En dashes are used for combinations of two names in place of the wordd `and'. Randall--Sundrum model.
+	\item For compound names of a single person, use a hyphen: Levi-Civita.
+\end{itemize}
+
+\subsection{Inserting code}
+
+Uncomment the following as well as the lines in \texttt{paper.tex} that loads the \texttt{listings} package.
+% \input{examples_listings}
+
+
+
+\subsection{Miscellaneous}
+
+\begin{itemize}
+	\item \textbf{align environment}: Use the \texttt{align} environment instead of \texttt{eqnarray}. See TeXblog discussion\footnote{\url{https://texblog.net/latex-archive/maths/eqnarray-align-environment/}}
+	\item \textbf{centering environment}: Use \textbackslash\texttt{centering} rather than the \texttt{center} environment in figure environments to avoid adding extra vertical space.\footnote{\url{https://tex.stackexchange.com/questions/23650/when-should-we-use-begincenter-instead-of-centering}}
+	\item \textbf{Roman Subscripts}: use Roman style (e.g.~\textbackslash \texttt{text}\{$\cdots$\}) when the subscript is not a mathematical character. For example, $x_a$ makes sense for the value of $x$ at point $a$, but $x_\text{b}$ should be used if the `b' is shorthand for boundary. Similarly, $E_\text{max}$ for the maximum energy, rather than $E_{max}$.
+	\item Spacing: thin\,space, medium\:space, thick\;space, thin\!negative\!space.
+	\item \textbf{Ties} (tildes): \LaTeX interprets periods as full stops (end of a sentence). It places extra space after the full stop. Use a tie when a period is not a full stop: Mr.~Roboto versus Mr. Roboto. 
+	\item You can also use ties this whenever you want to prevent a line break between words. \LaTeX interprets the tied words as a single word.
+	\item The double dollar sign notation for \texttt{displaymath} is depreciated.\footnote{\url{https://tex.stackexchange.com/questions/503/why-is-preferable-to}}
+\end{itemize}
+
+More information available here:
+\begin{itemize}
+	\item Consistent typography on tex.stackexchange\footnote{\url{https://tex.stackexchange.com/questions/29840/consistent-typography}}
+	\item List of best practices references on tex.stackexchange\footnote{\url{https://tex.stackexchange.com/questions/577/best-practices-references}}, including the list of obsolete packages and commands in 2e\footnote{\url{https://www.ctan.org/tex-archive/info/l2tabu/english/}}
+	\item There is an \acro{ISO} standard for typesetting mathematics and physics. As of 2023 it is \acro{ISO\~80000}.
+\end{itemize}
