@@ -1,0 +1,153 @@
+%% LaTeX Paper Template, Flip Tanedo (flip.tanedo@ucr.edu)
+%% GitHub: https://github.com/fliptanedo/paper-template-2022
+
+\documentclass[12pt]{article}
+
+\input{FlipPreamble}			%% \usepackages
+% \input{FlipAdditionalHeader} 	%% Use this define additional macros
+% \input{FlipAdditionalHeader_listings}
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{example}{Example}[section]
+\input{FlipPreambleEnd}			%% packages that have to be at the end
+\begin{document}
+
+\newcommand{\FlipTR}{UCR-TR-2023-FLIP-00X} % (pdfsync may fail on 1st page)
+	\thispagestyle{firststyle} 	% TR#; otherwise use \thispagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  FRONTMATTER    %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+    {\huge \textbf{Machine Learning for Physics Students} \par}
+    \vskip .5cm
+    \input{FlipAuthors}
+\end{center}
+
+\begin{abstract}
+\noindent 
+Notes on machine learning for physicists who do not know anything.
+\end{abstract}
+
+\small
+\setcounter{tocdepth}{2}
+\tableofcontents
+\normalsize
+%\clearpage
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  THE CONTENT  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+% Some examples that I'd like to keep handy
+% \section{Examples}
+% \input{examples}
+
+
+\section{Introduction}
+
+\subsection{Line fitting}
+
+Suppose you know that some data follows a linear relationship,
+\begin{align}
+    y = ax \ .
+\end{align}
+% Perhaps you have a circuit where you can set the voltage difference between two points ($x$) and measure the current between those two points ($y$). By Ohm's law, the constant $a$ is the inverse of the resistance, $a = R^{-1}$. Suppose we want to measure the [inverse] resistance. To do this, all we have to do is set the voltage difference to be some convenient value, $x_1$, and then measure what the current is, $y_1$. To be clear, $x$ and $y$ are variables, while $x_1$ and $y_1$ are measured values of these variables in a specific circuit. We deduce that for this circuit $a = y_1/x_1$. 
+Suppose $x$ is something that we can control experimentally, like the voltage between two points on a circuit. Further, suppose that $y$ is something that we can measure experimentally, like the current between those two points.  We could then deduce the value of $a$ (the inverse resistance) by picking some value of $x=x_1$ and measuring the corresponding output $y=y_1$, then taking the ratio $a = y_1/x_1$.
+
+% put units on this
+
+Let us now recall that we do not live in a platonic world of idealized measurements. Our measurements are noisy. This means that the ``true'' values of $\hat y_1$ and $\hat x_1$ are different by the measured values. The difference is \emph{random}. If you want to be fancy, we can say that the difference is \textbf{stochastic}, which means that it is random but drawn from a probability distribution. Physicists are trained to be comfortable with stochasticity since it comes up in at least three ways in our education:
+\begin{enumerate}
+    \item Experimental measurements have finite resolution and suffer from experimental noise. 
+    \item Thermodynamic measurements, even idealized ones, are subject to thermal randomness.
+    \item Quantum measurements, even idealized ones, are subject to intrinsic quantum randomness.
+\end{enumerate}
+
+In order to determine the value of the parameter $a$, we may thus make several measurements. We can dress this act with some sophisticated words about averaging over the randomness so that for large number of measurements $(x_i, y_i)$ we expect that the average value of $y_i/x_i$ to be the `true' value of $a$. Here $i$ indexes each datum so that it ranges from 1 to $N$, the number of $(x,y)$ pairs that we measure in our lab notebook.
+
+Now let us make the situation a bit more interesting. Suppose we have data $\{(x_i, y_i)\}$. We do not know if this data has a linear relationship of the form $y=ax$, but we would like to figure out the value of $a$ and quantify how well the line fits the data. In a completely unrealistic twist, let us further handicap ourselves by saying that we cannot take the quotient $y_i/x_i$. Instead, we have to determine $a$ by guessing several values $a_\text{guess}$ and checking how good the line $y=a_\text{guess} x$ fits the data. 
+
+Suppose we have a list of guesses, $a_I$ where $I=1, \cdots, N_\text{guess}$. How do we quantify how good $y=a_I x$ fits the data? One way is to take each data point and check how well the following relation holds:
+\begin{align}
+    y_i \stackrel{?}{=} a_I x_i \ ,
+\end{align}
+which is what we would expect if (1) the data is fit by a linear relationship and (2) $a_I$ is the linear coefficient. One nice comparison is to take each data point indexed by $i$, square the difference between the observed output $y_i$ and the expected output $a_I x_i$, and then sum these squares:
+\begin{align}
+    L(a) = \sum_i \left(y_i - a x_i\right)^2 \ .
+\end{align}
+To be fancy let us call $L(a_I)$ the \textbf{loss function} for the hypothesis $a=a_I$.  We could have used $|y_i - a x_i|$, or $\left(y_i - a x_i\right)^{10}$, or any other function that monotonically increases. We should not use $(y_i-a x_i)$ because the sum can end up being small because of large differences with opposite signs. We want to sum over $i$ because this lets us account for all of the data.\footnote{If we replace the sum by a product, for example, then fitting really well to one data point will make the entire loss function small, even if the rest of the data is a poor fit.}
+
+The best value of $a$ from the set of points $\{a_I\}$ is
+\begin{align}
+    a_\text{best} = \text{arg}\,\text{min}_{a_I} L(a_I) \ ,
+\end{align}
+where the right hand side means the value of $a_I$ that minimizes the loss function. An algorithm may look like:
+\begin{enumerate}
+    \item Start with $I=1$. Calculate $L(a_I)$. Write it down.
+    \item Advance $I\to I+1$. Calculate $L(a_{I+1})$. Write it down.
+    \item Repeat the previous step until you have all $\{L(a_I)\}$.
+    \item Pick the smallest value of $L(a_I)$. Return the value of $a_I$ associated with this value of $I$. 
+\end{enumerate}
+This is not particularly sophisticated and the task is readily offloaded to a computer.
+
+\begin{exercise}
+Argue that this procedure generalizes to higher-dimensional linear relationships of the form $\vec{y} = A \vec{x}$ where $\vec{y}$ and $\vec{x}$ are vectors---not necessarily of the same dimension---and $A$ is a matrix of the appropriate dimension. 
+\end{exercise}
+
+
+Just because we have found the \emph{best} fit for the parameter $a$, that does not mean we have found a \emph{good} fit. The value of $L(a)$ for our best fit quantifies how good the $y=ax$ ansatz represents the data. 
+
+
+If $L(a)$ is very large, perhaps we have not allowed the algorithm to find a reasonable value of $a$. This may be because we did not consider a large enough set of possible $a$ values, since $a$ is drawn from an infinite continuum of possible values. We can then phrase our problem with respect to the continuum of $a$ values: the best fit value of $a$ is the one that minimizes the loss for \emph{fixed data} and \emph{variable a}: $L(a)$. One necessary condition for this is $L'(a) = 0$. At this point you should be thinking about minima versus maxima and local versus global. Further, you should think that we can still offload this task to a computer through clever discrete approximations of continuous problems. One last observation you should make is that for any value of $a$ with $L'(a)\neq 0$, the sign and magnitude of $L'(a)$ gives you information for what direction you should perturb $a$ to approach a minimum. This is because a Taylor expansion tell sus
+\begin{align}
+    L(a) = L(a_0) + L'(a_0) \Delta a + \cdots .
+\end{align}
+So if $L'(a_0)$ is large, that means $\Delta a = (a-a_0) <0$ will make $L(a) < L(a_0)$ to leading order. This is the basis for the standard optimizer in basic machine learning, gradient descent.
+
+
+\emph{However}, it may be that $L_I$ is large for any value of $a$. This indicates that the data is not described by a linear relationship. 
+
+\subsection{Curve Fitting}
+
+\textbf{Regression} is procedure of finding a functional relationship between a dependent variable ($y$) to an independent variable ($x$) using data (pairs $(x,y)$). For humans, this usually means writing an explicit function whose parameters mean something significant. 
+
+\subsection{Representations of Functions}
+
+Vectors
+
+
+
+
+
+
+
+ \section*{Acknowledgments}
+
+\acro{PT}\ thanks 
+\emph{your name here}
+for useful comments and discussions. 
+%
+\acro{PT} thanks 
+    the Aspen Center for Physics (\acro{NSF} grant \acro{\#1066293})
+    % and the Kavli Institute for Theoretical Physics (\acro{NSF} grant \acro{PHY-1748958})
+    for 
+    its 
+    % their
+    hospitality during a period where part of this work was completed. 
+%
+% \acro{PT} is supported by the \acro{DOE} grant \acro{DE-SC}/0008541.
+\acro{PT} is supported by a \acro{NSF CAREER} award (\#2045333).
+
+%% Appendices
+% \appendix
+
+
+%% Bibliography
+%\bibliographystyle{utcaps} 	% arXiv hyperlinks, preserves caps in title
+%\bibliographystyle{utphys} 	% arXiv hyperlinks
+% \bibliography{bib title without .bib}
+
+\end{document}
