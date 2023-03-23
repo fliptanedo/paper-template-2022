@@ -19,7 +19,22 @@ I include these files in this repository.
 
 * Place figures in the `\figures` directory. 
 
-## How to use this
+# How to use this
+
+1. Go to repo's [page]( https://github.com/fliptanedo/paper-template-2022) on GitHub.
+
+2. Click on the green **Use this template** button and select **Create a new repository**. This is a nice feature of *template* repositories: you can create new repositories that are not connected to the template. This is in contrast to *forking* a repository, which has the implication of later suggesting that your edits should be merged back into the main branch.
+
+3. Follow the directions to create a new repository. Suppose you call it `NEW-REPO-NAME`. You may want to make it private if you're writing some top secret paper. Once you have created a new repository, click on the green **Code** button and copy the GitHub CLI code. It should look something like
+   ```
+   gh repo clone fliptanedo/NEW-REPO-NAME
+   ```
+
+4. Navigate a terminal window to the folder in which you would like to clone the `NEW-REPO-NAME` GitHub  repository, Paste the above `gh` code and execute it. This assumes that you have the [GitHub CLI](https://cli.github.com) installed.
+
+5. Your new paper and local git repository is all set to go. 
+
+## How to use this (old)
 
 For those, like me, are less competent with `git` and GitHub than we really aught to be.
 
