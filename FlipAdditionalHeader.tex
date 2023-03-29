@@ -12,3 +12,31 @@
 
 %% ACRONYMS
 \newcommand{\DM}{\acro{DM}\xspace}		% nb: I do not like using this
+
+
+%% COMMANDS FOR TEMPORARY COMMENTS
+%% -------------------------------
+\newcommand{\comment}[2]{\textcolor{red}{[\textbf{#1} #2]}}
+\newcommand{\flip}[1]{{
+	\color{green!50!black}
+  \footnotesize
+  [\textbf{\textsf{Flip}}: \textsf{#1}]
+	}}
+
+%% FRAMES (mdframed package)
+
+\global\mdfdefinestyle{flipbox}{%
+	linecolor=green!50!black,linewidth=1pt,%
+	leftmargin=0cm, rightmargin=0cm
+} 
+
+\newenvironment{flipcomment}
+	{
+		\begin{mdframed}[style=flipbox] 
+		\color{green!50!black}
+		\sffamily
+		\footnotesize
+ 		\textbf{\textsf{Flip}}:
+	}{
+		\end{mdframed}
+	}
