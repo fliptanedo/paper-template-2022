@@ -97,6 +97,10 @@ The sections above are \cref{sec:macros,sec:cleveref,sec:figs,sec:tables}.
 \section{Other Best Practices}
 
 
+\subsection{\texorpdfstring{\LaTeX in a title}{LaTeX in a title}}
+
+When using \LaTeX code in a section title, use the \texttt{texorpdfstring} command to define an \acro{UTF-8} string that the pdf can use for bookmarks. If you do not do this, there are annoying compilation warnings.
+
 \subsection{Kerning: spacing between characters}
 Math operators have a natural spacing before and after depending on the context. In the following example, spaces indicate that the coefficient $a$ multiplies the logarithm of $b$:
 \begin{align}
