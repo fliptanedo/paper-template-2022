@@ -18,6 +18,18 @@
 \newlength\inwd
 \setlength\inwd{1.3cm}
 
+
+\lstdefinestyle{mystyle}
+{
+  language=[LaTeX]{TeX},
+  texcsstyle=*\color{blue},
+  basicstyle=\ttfamily,
+  moretexcs={mycommand}, % user command highlight
+  frame=single,
+}
+
+% PUYTHON
+
 \newcounter{ipythcntr}
 \renewcommand{\theipythcntr}{\texttt{[\arabic{ipythcntr}]}}
 
