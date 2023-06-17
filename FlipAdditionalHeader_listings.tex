@@ -19,7 +19,9 @@
 \setlength\inwd{1.3cm}
 
 
-\lstdefinestyle{mystyle}
+% LATEX 
+% https://tex.stackexchange.com/a/637305/8094
+\lstdefinestyle{latexstyle}
 {
   language=[LaTeX]{TeX},
   texcsstyle=*\color{blue},
@@ -28,7 +30,9 @@
   frame=single,
 }
 
-% PUYTHON
+%% \begin{lstlisting}[style=latexstyle]
+
+% PYTHON
 
 \newcounter{ipythcntr}
 \renewcommand{\theipythcntr}{\texttt{[\arabic{ipythcntr}]}}

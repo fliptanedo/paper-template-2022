@@ -69,8 +69,10 @@
 % 	}
 % \end{table}
 
-\section{cleveref}
+\section{Labels and cleveref}
 \label{sec:cleveref}
+
+\subsection{cleverref}
 
 \texttt{cleveref} is a handy package when referring to ranges of equations. 
 
@@ -93,6 +95,24 @@ The equations above are (glomped together)
 \end{itemize}
 
 The sections above are \cref{sec:macros,sec:cleveref,sec:figs,sec:tables}.
+
+
+
+\subsection{Not cleverref}
+
+One can also wrap a \texttt{align} environment with a \texttt{subequations} environment. The \texttt{subequations} environment can be given a label. For example,
+\begin{subequations}\label{eq:subequations}
+\begin{align}
+	a &= \pi 
+	\label{eq:subequation:1}
+	\\
+	b &= e^{i\pi} 
+	\ .
+	\label{eq:subequation:2}
+\end{align}
+\end{subequations}
+where we can now refer to the pair of equations \eqref{eq:subequations} or simply one of the equations, \eqref{eq:subequation:2}.
+
 
 \section{Other Best Practices}
 
@@ -134,6 +154,12 @@ Hyphens, en dashes, em dashes, and minus signs in math mode are all grammaticall
 Uncomment the following as well as the lines in \texttt{paper.tex} that loads the \texttt{listings} package.
 % \input{examples_listings}
 
+% \subsection{Kerning}
+
+% \begin{align}
+% 	\left(\frac{R}{z}\right)^d\\
+% 	{\mleft(\frac{R}{z}\mright)}^{\!\!d}
+% \end{align}
 
 
 \subsection{Miscellaneous}
