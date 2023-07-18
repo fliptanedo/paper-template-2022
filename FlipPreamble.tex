@@ -44,7 +44,7 @@
 \usepackage{subcaption}	% subfigures
 \usepackage{cite}			  % group cites
 \usepackage{xspace}			% macro spacing
-
+\usepackage{wrapfig}    
 
 %% TABLES IN LaTeX
 %% ---------------
@@ -60,7 +60,7 @@
 %% ------------------------
 \usepackage[font=small]{caption} 	% caption font is small
 \usepackage{float}         			  % for strict placement e.g. [H]
-
+\usepackage{lineno}               % Line numbers (put \linenumbers in main text)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  DOCUMENT PROPERTIES  %%%%
@@ -74,8 +74,6 @@
 % \usepackage{marginfix}              % fix for \marginnote
 % \usepackage{adjustbox}              % to rescale elements
 
-
-
 %% References in two columns, smaller
 %% http://tex.stackexchange.com/questions/20758/
 \usepackage{multicol}
@@ -87,7 +85,6 @@
   {}
   {}
 \appto{\endthebibliography}{\end{multicols}}
-
 
 % Change list spacing (instead of package paralist)
 % from: http://en.wikibooks.org/wiki/LaTeX/List_Structures#Line_spacing
@@ -108,44 +105,38 @@
   \setlength{\parsep}{0pt}
 }
 
-%% FOR DRAFT EDITING AND DISCUSSION
-\usepackage{lineno}
-% \linenumbers          %% put this in main text
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  (RE)NEW COMMANDS  %%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% FOR `NOT SHOUTING' CAPS (e.g. acronyms)
-%% ---------------------------------------
-\usepackage{scalefnt} 
-% \newcommand\acro[1]{{\footnotesize #1}}           % acronyms in footnote size
-\newcommand\acro[1]{{\small{#1}}} 
-
-
-%% COMMON PHYSICS MACROS
-%% ---------------------
-\renewcommand{\tilde}{\widetilde}                 % tilde over characters
-\renewcommand{\text}{\textnormal}	                % text in equations 
-\renewcommand{\vec}[1]{\mathbf{#1}}               % vectors are boldface
-
-%% Differential and differential/2pi
-% \newcommand{\dbar}{d\mkern-6mu\mathchar'26}     % for d/2pi
-\newcommand{\dbar}{d\mkern-6mu\mathchar'26\hspace{-.1em}}    
-%% Best practice: Roman differential
-\newcommand{\D}[1]{\ensuremath{\operatorname{d}\!{#1}}}
-\newcommand{\Dbar}[1]{\operatorname{d}\mkern-10mu\mathchar'26\mkern-2mu{#1}}    % fixed spacing
-\newcommand{\ket}[1]{\left|#1\right\rangle}       % <#1|
-\newcommand{\bra}[1]{\left\langle#1\right|}       % |#1>
-\newcommand*{\trans}{\mkern-1.5mu\mathsf{T}}      % transpose
-
+%%%%%%%%%%%%%%%%%%%%%
+%%%  TITLE DATA  %%%%
+%%%%%%%%%%%%%%%%%%%%%
 
 %% COMMANDS FOR TOP-MATTER
 %% -----------------------
 \newcommand{\email}[1]{\href{mailto:#1}{#1}}
 \newenvironment{institutions}[1][2em]{\begin{list}{}{\setlength\leftmargin{#1}\setlength\rightmargin{#1}}\item[]}{\end{list}}
 
+%% PREPRINT NUMBER USING fancyhdr
+%% Don't forget to set \thispagestyle{firststyle}
+%% ----------------------------------------------
+\renewcommand{\headrulewidth}{0pt}  % no separator
+\setlength{\headheight}{15pt}     % min to avoid fancyhdr warning
+\fancypagestyle{firststyle}{
+  \rhead{\footnotesize%
+  \texttt{\FlipTR}%
+  }}
+
+%% TOC overwrites fancyhdr, here's a fix
+%% http://tex.stackexchange.com/questions/167828/
+\usepackage{etoc}
+\renewcommand{\etocaftertitlehook}{\pagestyle{plain}}
+\renewcommand{\etocaftertochook}{\thispagestyle{firststyle}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  (RE)NEW COMMANDS  %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% COMMANDS FOR LATEXDIFF
 %% ----------------------
@@ -159,22 +150,4 @@
 
 %% USAGE: latexdiff draft.tex revision.tex > diff.tex
 
-%%%%%%%%%%%%%%%%%%%%%
-%%%  TITLE DATA  %%%%
-%%%%%%%%%%%%%%%%%%%%%
 
-%% PREPRINT NUMBER USING fancyhdr
-%% Don't forget to set \thispagestyle{firststyle}
-%% ----------------------------------------------
-\renewcommand{\headrulewidth}{0pt} 	% no separator
-\setlength{\headheight}{15pt} 		% min to avoid fancyhdr warning
-\fancypagestyle{firststyle}{
-	\rhead{\footnotesize%
-	\texttt{\FlipTR}%
-	}}
-
-%% TOC overwrites fancyhdr, here's a fix
-%% http://tex.stackexchange.com/questions/167828/
-\usepackage{etoc}
-\renewcommand{\etocaftertitlehook}{\pagestyle{plain}}
-\renewcommand{\etocaftertochook}{\thispagestyle{firststyle}}

@@ -1,18 +1,30 @@
 %!TEX root = paper.tex
 %% Update the above with the appropriate root
 
-\section{Macros}
-\label{sec:macros}
 
-\flip{This is a comment. Let's test out the `not shouting' caps:}
-\begin{itemize}
-	\item \acro{AdS} in \acro{5D} at the \acro{LHC}.
-	\item AdS in 5D at the LHC. 
-	\item A third list item to test list spacing.
-\end{itemize}
+\section{Common environments}
 
 
-\section{Figures in Equation Environments}
+\subsection{Figures: floating and wrapped}
+
+\begin{figure}%[th]
+    \centering
+    \includegraphics[width=0.4\textwidth]{example-image-a}
+    \caption{The figure environment shows up often.}
+    \label{fig:figure:example}
+\end{figure}
+
+Use \textbackslash\texttt{centering} rather than the \texttt{center} environment in figure environments to avoid adding extra vertical space.\footnote{\url{https://tex.stackexchange.com/a/23653/8094}}
+
+
+\begin{wrapfigure}{l}{0.3\textwidth}
+	\includegraphics[width=0.9\linewidth]{example-image-a}
+	\caption{via \texttt{wrapfigure}.}
+	\label{fig:wrapfig}
+\end{wrapfigure}
+\lipsum[1]
+
+\subsection{Figures in Equation Environments}
 \label{sec:figs}
 
 \begin{align}
@@ -45,22 +57,38 @@
 	\label{eq:pseudo}
 \end{align}
 
-\section{Best practices for tables}
+
+\subsection{Best practices for tables}
 \label{sec:tables}
 
 % \begin{table}
 	% \renewcommand{\arraystretch}{1.3} % spacing between rows
 	% \centering
 	\begin{tabular}{ @{} llll @{} } \toprule % @{} removes space
-		Element & Core MF & Mantle MF & $C_\text{cap}^N (\text{s}^{-1})$ 
+		Element 
+		& Core MF 
+		& Mantle MF 
+		& $C_\text{cap}^N (\text{s}^{-1})$ 
 		\\ \hline
-		Iron & 0.855 & 0.0626 & $9.43\times 10^{7}$ 
+		Iron 
+		& 0.855 
+		& 0.0626 
+		& $9.43\times 10^{7}$ 
 		\\
-		Nickel & 0.052 & 0.00196 & $7.10\times 10^{6}$ 
+		Nickel 
+		& 0.052 
+		& 0.00196 
+		& $7.10\times 10^{6}$ 
 		\\
-		Silicon & 0.06 & 0.210 & $2.24\times 10^{6}$ 
+		Silicon 
+		& 0.06 
+		& 0.210 
+		& $2.24\times 10^{6}$ 
 		\\
-		Magnesium & 0 & 0.228 & $1.05\times 10^{6}$ 
+		Magnesium 
+		& 0 
+		& 0.228 
+		& $1.05\times 10^{6}$ 
 		\\ \bottomrule
 	\end{tabular}
 	% \caption{
@@ -69,10 +97,14 @@
 % 	}
 % \end{table}
 
+
+
+
 \section{Labels and cleveref}
 \label{sec:cleveref}
 
-\subsection{cleverref}
+
+\subsection{\texorpdfstring{\texttt{cleveref}}{cleveref}}
 
 \texttt{cleveref} is a handy package when referring to ranges of equations. 
 
@@ -97,8 +129,7 @@ The equations above are (glomped together)
 The sections above are \cref{sec:macros,sec:cleveref,sec:figs,sec:tables}.
 
 
-
-\subsection{Not cleverref}
+\subsection{Sub-equations}
 
 One can also wrap a \texttt{align} environment with a \texttt{subequations} environment. The \texttt{subequations} environment can be given a label. For example,
 \begin{subequations}\label{eq:subequations}
@@ -111,15 +142,104 @@ One can also wrap a \texttt{align} environment with a \texttt{subequations} envi
 	\label{eq:subequation:2}
 \end{align}
 \end{subequations}
-where we can now refer to the pair of equations \eqref{eq:subequations} or simply one of the equations, \eqref{eq:subequation:2}.
+where we can now refer to the pair of equations \eqref{eq:subequations} or simply one of the equations, \eqref{eq:subequation:2}. This also works in \texttt{cleveref}: \cref{eq:subequations} and \cref{eq:subequation:2}.
 
 
-\section{Other Best Practices}
+\subsection{Referring to Equations}
+
+One style suggestion is to use parentheses to refer to an equation with no additional modifiers \emph{except} at the beginning of a sentence.\footnote{\url{https://academia.stackexchange.com/a/21793}} For example: ``The second term in (3)...'' and ``Equation~(3) has two terms...''
 
 
-\subsection{\texorpdfstring{\LaTeX in a title}{LaTeX in a title}}
 
-When using \LaTeX code in a section title, use the \texttt{texorpdfstring} command to define an \acro{UTF-8} string that the pdf can use for bookmarks. If you do not do this, there are annoying compilation warnings.
+\section{Macros}
+\label{sec:macros}
+
+
+\subsection{Modest capitalization}
+
+Small caps are useful when your text contains acronyms and you do not want them to visually imply emphasis. In other words, we can use them as `not shouting' capitalization. We define a macro \texttt{acro} for this purpose. The default is for \texttt{acro} to be a wrapper for \texttt{small}. Here is an example:
+\begin{itemize}
+	\item \acro{AdS} in \acro{5D} at the \acro{LHC}.
+	\item AdS in 5D at the LHC. 
+	\item A third list item to test list spacing.
+\end{itemize}
+
+
+\subsection{Comments for Collaboration}
+
+There are many ways to add notes when collaborating on a document. I like in-line notes with an author name and a color.  \flip{This is an example of a comment.} It is also useful to have a macro for highlighting new text and for proposing the removal of old text.
+
+\new{
+I fixed the equation:
+\begin{align}
+	a=b^2 
+	\label{eq:samename}
+\end{align}
+It has label \texttt{eq:samename}. 
+}
+
+\remove{
+	% It is good practice to indent the `to-be deleted' text
+	Here is an equation:
+	\begin{align}
+	a=b 
+	\label{eq:samename}
+	\end{align}
+	It has label \texttt{eq:samename}.
+}
+
+This is essentially a manual version of the \texttt{latexdiff} command. This command can be notoriously fussy around math environments. I personally advocate for using \texttt{git}-related tools to quickly identifying where a version was edited and then using tags to identify edits that need to be highlighted for further discussion. One nice thing about the \texttt{remove} tag above is that it also strips any \texttt{label}s so that there are no `multiply defined label' arguments and one can uniquely refer to a single equation, \eqref{eq:samename}.
+
+\begin{flipcomment}
+This is an extended comment that shows up as a text box. I might use this to make some ponderous point about why I think my version of a draft paragraph is more appropriate than yours.
+\end{flipcomment}
+
+
+\section{Mathematics and Physics}
+
+\subsection{Environments}
+
+Use the \texttt{align} environment instead of \texttt{eqnarray}, see the TeXblog discussion\footnote{\url{https://texblog.net/latex-archive/maths/eqnarray-align-environment/}}. The double dollar sign notation for \texttt{displaymath} is depreciated.\footnote{\url{https://tex.stackexchange.com/questions/503/why-is-preferable-to}} The suggested alternative is \textbackslash\texttt{[} and \textbackslash\texttt{]}, though this is rather annoying. As a default I always use \texttt{align}.
+
+
+\subsection{Text and Math: super- and subscripts}
+
+Use the \texttt{text} command to insert text into math environments. For subscripts use \texttt{textnormal}. 
+% 
+We use the \texttt{textnormal} command for super- or subscripts rather than the \texttt{text} command because this automatically uses the correct size. Compare, for example: $G_\textnormal{D},\, G_\text{D}$.
+
+One place this shows up is if you have a subscript that is not a mathematical variable. For example, $x_a$ makes sense for the value of $x$ at point $a$, but $x_\text{b}$ should be used if the `b' is shorthand for boundary. Similarly, $E_\text{max}$ for the maximum energy, rather than $E_{max}$.
+
+
+\subsection{Units and spacing}
+
+Use a tie (tilde) to enforce a non-breaking short space between a number and its units: $0.5~\text{MeV}$. Units should not be italicized.
+
+
+\subsection{Upright characters}
+
+These come from the \acro{ISO 80000} standards for typesetting mathematics and physics.\footnote{See discussion in \url{https://tex.stackexchange.com/questions/14821/whats-the-proper-way-to-typeset-a-differential-operator}} It is not obvious to me that these are applicable to the typographical culture of physics, but the most important thing is to be consistent.
+\begin{itemize}
+	\item Units are always upright, \textmu m is a micrometer. You can use various unit packages to do this automatically. 
+	\item The base of the natural logarithm is upright $\mathrm{e}^{i\pi}$ versus $e^{i\pi}$.
+	\item The differential is an operator so it should be upright. I have macros for this: $dx$ vs.~$\D{x}$ and $\dbar p$ vs.~$\Dbar{p}$. The \texttt{physics} package has macros for this. 
+\end{itemize}
+There is a historical discussion on \texttt{hsm.stackexchange}\footnote{\url{https://hsm.stackexchange.com/questions/6727/fracdydx-versus-frac-mathrm-dy-mathrm-dx}}.
+
+
+
+\subsection{Miscellaneous}
+
+
+\begin{itemize}
+	\item Use $\mid$ instead of pipe for conditions: $p(x\mid y)$ versus $p(x|y)$.
+	\item Transpose: The \acro{ISO}~80000 standard has suggestions. $A^T$ vs $A^\top$ vs $A^{\trans}$. I personally prefer $A^\text{T}$.
+	\item \textbf{Textual subscripts}: sometimes you have a subscript that is not an index, but shorthand for something textual. For example, the Green's function with Dirichlet boundary conditions is $G_\textnormal{D}$. The subscript is upright, not italicized, $G_D$. Use the \texttt{textnormal} command rather than the \texttt{text} command since this will automatically use the correct size. Comparison: $G_\textnormal{D},\, G_\text{D}$.
+	\item Arrows with text under them: \texttt{xrightarrow} in the \texttt{amsmath} package. The square bracketed argument is under, the curly bracketed argument is over. Example: $\xrightarrow[\textnormal{low}]{\textnormal{hi}}$.
+\end{itemize}
+
+
+\section{Space}
 
 \subsection{Kerning: spacing between characters}
 Math operators have a natural spacing before and after depending on the context. In the following example, spaces indicate that the coefficient $a$ multiplies the logarithm of $b$:
@@ -127,17 +247,28 @@ Math operators have a natural spacing before and after depending on the context.
 	a\log b && a\log(bc)
 \end{align}
 The space on either side of $\log$ indicate that $\log$ is a mathematical operator. The second example still has the space between $a$ and $\log$, but has no space between $\log$ and $(bc)$ because the parenthesis belongs to the mathematical function.\footnote{Example from \url{https://tex.stackexchange.com/a/140647}}
+% 
+You can use \textbackslash\texttt{DeclareMathOperator} for functions that are not built in.
 
-You can use \textbackslash\texttt{operatorname} and \textbackslash\texttt{DeclareMathOperator} for functions that are not built in.
 
-\subsection{Upright characters}
-These come from the \acro{ISO 80000} standards for typesetting mathematics and physics.\footnote{See discussion in \url{https://tex.stackexchange.com/questions/14821/whats-the-proper-way-to-typeset-a-differential-operator}} It is not obvious to me that these are applicable to the typographical culture of physics, but the most important thing is to be consistent.
-\begin{itemize}
-	\item Units are always upright, \textmu m is a micrometer. You can use various unit packages to do this automatically. 
-	\item The base of the natural logarithm is upright $\mathrm{e}^{i\pi}$ versus $e^{i\pi}$.
-	\item The differential is an operator so it should be upright. I have macros for this: $dx$ vs.~$\D{x}$ and $\dbar p$ vs.~$\Dbar{p}$. The \texttt{physics} package has macros for this. 
-\end{itemize}
-There is a historical discussion on hsm.stackexchange\footnote{\url{https://hsm.stackexchange.com/questions/6727/fracdydx-versus-frac-mathrm-dy-mathrm-dx}}.
+\subsection{Manual Spacing}
+
+\LaTeX has commands for manually inserting spacing: thin\,space, medium\:space, thick\;space, thin\!negative\!space.
+
+
+\subsection{Ties create non-breaking spaces}
+
+\LaTeX interprets periods as full stops (end of a sentence). It places extra space after the full stop. Use a \textbf{tie} (tilde) when a period is not a full stop: Mr.~Roboto versus Mr. Roboto. 
+% 
+You can also use ties this whenever you want to prevent a line break between words. \LaTeX interprets the tied words as a single word.
+
+
+
+\section{Some Best Practices}
+
+\subsection{\texorpdfstring{\LaTeX\, in a title}{LaTeX in a title}}
+
+When using \LaTeX code in a section title, use the \texttt{texorpdfstring} command to define an \acro{UTF-8} string that the pdf can use for bookmarks. If you do not do this, there are annoying compilation warnings.
 
 
 \subsection{Ranges}
@@ -149,40 +280,4 @@ Hyphens, en dashes, em dashes, and minus signs in math mode are all grammaticall
 	\item For compound names of a single person, use a hyphen: Levi-Civita.
 \end{itemize}
 
-\subsection{Inserting code}
 
-Uncomment the following as well as the lines in \texttt{paper.tex} that loads the \texttt{listings} package.
-% \input{examples_listings}
-
-% \subsection{Kerning}
-
-% \begin{align}
-% 	\left(\frac{R}{z}\right)^d\\
-% 	{\mleft(\frac{R}{z}\mright)}^{\!\!d}
-% \end{align}
-
-
-\subsection{Miscellaneous}
-
-\begin{itemize}
-	\item \textbf{align environment}: Use the \texttt{align} environment instead of \texttt{eqnarray}. See TeXblog discussion\footnote{\url{https://texblog.net/latex-archive/maths/eqnarray-align-environment/}}
-	\item \textbf{centering environment}: Use \textbackslash\texttt{centering} rather than the \texttt{center} environment in figure environments to avoid adding extra vertical space.\footnote{\url{https://tex.stackexchange.com/questions/23650/when-should-we-use-begincenter-instead-of-centering}}
-	\item \textbf{Roman Subscripts}: use Roman style (e.g.~\textbackslash \texttt{text}\{$\cdots$\}) when the subscript is not a mathematical character. For example, $x_a$ makes sense for the value of $x$ at point $a$, but $x_\text{b}$ should be used if the `b' is shorthand for boundary. Similarly, $E_\text{max}$ for the maximum energy, rather than $E_{max}$.
-	\item Spacing: thin\,space, medium\:space, thick\;space, thin\!negative\!space.
-	\item \textbf{Ties} (tildes): \LaTeX interprets periods as full stops (end of a sentence). It places extra space after the full stop. Use a tie when a period is not a full stop: Mr.~Roboto versus Mr. Roboto. 
-	\item You can also use ties this whenever you want to prevent a line break between words. \LaTeX interprets the tied words as a single word.
-	\item The double dollar sign notation for \texttt{displaymath} is depreciated.\footnote{\url{https://tex.stackexchange.com/questions/503/why-is-preferable-to}}
-	\item Use $\mid$ instead of pipe for conditions: $p(x\mid y)$ versus $p(x|y)$.
-	\item Transpose: The \acro{ISO}~80000 standard has suggestions. $A^T$ vs $A^\top$ vs $A^{\trans}$. I personally prefer $A^\text{T}$.
-	\item \textbf{Textual subscripts}: sometimes you have a subscript that is not an index, but shorthand for something textual. For example, the Green's function with Dirichlet boundary conditions is $G_\textnormal{D}$. The subscript is upright, not italicized, $G_D$. Use the \texttt{textnormal} command rather than the \texttt{text} command since this will automatically use the correct size. Comparison: $G_\textnormal{D},\, G_\text{D}$.
-	\item Arrows with text under them: \texttt{xrightarrow} in the \texttt{amsmath} package. The square bracketed argument is under, the curly bracketed argument is over. Example: $\xrightarrow[\textnormal{low}]{\textnormal{hi}}$.
-\end{itemize}
-
-More information available here:
-\begin{itemize}
-	\item Consistent typography on tex.stackexchange\footnote{\url{https://tex.stackexchange.com/questions/29840/consistent-typography}}
-	\item List of best practices references on tex.stackexchange\footnote{\url{https://tex.stackexchange.com/questions/577/best-practices-references}}, including the list of obsolete packages and commands in 2e\footnote{\url{https://www.ctan.org/tex-archive/info/l2tabu/english/}}
-	\item There is an \acro{ISO} standard for typesetting mathematics and physics. As of 2023 it is \acro{ISO\~80000}.
-	\item ``The Art of \LaTeX,'' a list of guidelines from Fan Pu Zeng\footnote{\url{https://fanpu.io/blog/2023/latex-tips/}}
-	\item Showcase of beautiful typography in \LaTeX\footnote{\url{https://tex.stackexchange.com/questions/1319/showcase-of-beautiful-typography-done-in-tex-friends}}
-\end{itemize}

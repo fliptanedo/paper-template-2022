@@ -1,0 +1,90 @@
+%!TEX root = paper.tex
+%% Update the above with the appropriate root
+
+\section{\texorpdfstring{\LaTeX\ Style}{LaTeX Style}}
+
+There is not a definitive \LaTeX\ style guide analogous to \acro{PEP-8}. However, I do have my own set of preferences. Here style refers to how the \LaTeX\ source files are written. Two \texttt{tex} files may produce identical \texttt{pdf} outputs but be stylistically different. A well styled document is that is as easy as possible to parse and edit as a human being.
+
+
+\subsection{Idiosyncracies}
+
+While some coding style guides require a fixed width for the document. This gives meaning to a line of code and makes the resulting source more readable by avoiding unintentional text wrapping. \LaTeX is a bit different in that it is a typesetting language that is meant to handle paragraphs of text. Because modern editors naturally have text wrapping options, I do not feel strongly about enforcing a document-wide character width limit. Paragraphs of text should be allowed to wrap if that makes sense. However, mathematics environments should strive to make use of white space in service to readability.
+
+
+\subsection{Spacing and Indents}
+
+White space helps distinguish the document structure. 
+
+\begin{enumerate}
+	\item Sections should have three empty lines between each other.
+	\item Sub-sections should have two empty lines between each other.
+	\item All other units of paragraphs should have one empty line space between them.
+\end{enumerate}
+One may use with commented out empty lines to separate sentences from one another. 
+% 
+	This produces no paragraph break between the sentences in the output, but can help separate different ideas within a paragraph.
+% 
+	Similarly, one can combine this with indents to help visually organize the logical flow of a paragraph.
+
+
+\subsection{Mathematics}
+
+Use comments and white space to separate mathematics environments from plain text.
+% 
+The contents of a mathematics environment should use ample white space to separate each mathematical object as if these were words in a sentence.
+% 
+\begin{lstlisting}[style=latexstyle]
+\begin{align}
+	S_{\textnormal{fix}}^{\textnormal{Bulk}}
+	& =
+	\frac{-1}{g^2} 
+	\int d^{d+1} x  
+	\left( \frac{R}{z} \right)^{\!d-3}
+	\frac{1}{2\xi}
+	\left[
+	    \partial_\mu A^\mu
+	    -
+	    \xi\left( 
+	        z^{d-3} 
+	        \partial_z \left( \frac{A_z}{z^{d-3}} \right)
+	        -
+	        \left(\frac{R}{z}\right)^{\!2} g^2 v(z)\, \pi
+	    \right)
+	\right]^2 \ ,
+\label{eq:SGFBulk}
+\end{align}
+\end{lstlisting}
+% 
+This produces the following:
+\begin{align}
+	S_{\textnormal{fix}}^{\textnormal{Bulk}}
+	& =
+	\frac{-1}{g^2} 
+	\int d^{d+1} x  
+	\left( \frac{R}{z} \right)^{\!d-3}\frac{1}{2\xi}
+	\left[
+	    \partial_\mu A^\mu
+	    -
+	    \xi\left( 
+	        z^{d-3} \partial_z \left(\frac{A_z}{z^{d-3}}\right)
+	        -
+	        \left(\frac{R}{z}\right)^{\!2} g^2 v(z)\, \pi
+	    \right)
+	\right]^2 \ ,
+% \label{eq:SGFBulk}
+\end{align}
+For long expressions, each line should be a well-defined `unit' of the mathematical expression. When there are multiple `words' in an expression, add white space to delimit them. 
+
+For example, simple fractions do not need any white space, while more complicated fractions should provide some help:
+% 
+\begin{lstlisting}[style=latexstyle]
+\frac{ 
+	b_\mathcal{O}
+}{
+	\Lambda^{\Delta_\mathcal{O} - \frac{d}{2} - 1 }
+} 
+\end{lstlisting}
+% 
+This may seem like overkill, but in an expression with multiple fractions it is helpful to be able to quickly visually parse each piece of the expression.
+
+

@@ -3,15 +3,18 @@
 
 \documentclass[12pt]{article}
 
-\input{FlipPreamble}			%% \usepackages
-\input{FlipAdditionalHeader} 	%% additional macros
-% \input{FlipAdditionalHeader_listings} %% for code blocks
+\input{FlipPreamble}			%% \usepackages, formatting
+\input{FlipMacros}              %% Flip's standard macros
+\input{FlipAdditionalHeader} 	%% Modify this for each project
+\input{Flip_listings}           %% Styling for code blocks
 \input{FlipPreambleEnd}			%% packages that have to be at the end
+
+% \linenumbers                  %% print line numbers (lineno package)
 
 \begin{document}
 
-\newcommand{\FlipTR}{UCR-TR-2023-FLIP-00X} % (pdfsync may fail on 1st page)
-	\thispagestyle{firststyle} 	% TR#; otherwise use \thispagestyle{empty}
+\newcommand{\FlipTR}{UCR-TR-2023-FLIP-00X} % TR#, pdfsync may fail on 1st page
+\thispagestyle{firststyle} 	               % TR#; otherwise use \thispagestyle{empty}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,14 +49,22 @@ In the beginning... \lipsum[5]
 
 % Some examples that I'd like to keep handy
 \input{examples}
-% \input{examples_listings}
+\input{examples_listings}
+\input{examples_bestpractices}
+\input{examples_refs}
 % I should have a bit about style
-%   Didier Verna, ``Towards LATEX coding standards''
-%     https://tug.org/TUGboat/tb32-3/tb102verna.pdf
-%     https://medium.com/@pbeliveau/latex-coding-standards-f82743b7866b
-%     http://zeeba.tv/toward-latex-coding-standards/
+%   
+%     
+%     
+%     
 %   Evan Chen's guide
 %     https://web.evanchen.cc/latex-style-guide.html
+
+
+
+
+
+
 
 \section*{Acknowledgments}
 

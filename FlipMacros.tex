@@ -1,0 +1,116 @@
+%!TEX root = paper.tex
+%% FLIP’S MACROS 
+%% USES: FlipPreamble.tex
+
+%% FOR `NOT SHOUTING' CAPS (e.g. acronyms)
+%% ---------------------------------------
+\usepackage{scalefnt} 
+% \newcommand\acro[1]{{\footnotesize #1}}           % acronyms in footnote size
+\newcommand\acro[1]{{\small{#1}}} 
+
+
+%% COMMANDS FOR TEMPORARY COMMENTS
+%% -------------------------------
+\newcommand{\comment}[2]{\textcolor{red}{[\textbf{#1} #2]}}
+\newcommand{\flip}[1]{{
+  \color{green!50!black}
+  \footnotesize
+  [\textbf{\textsf{Flip}}: \textsf{#1}]
+  }}
+
+\newcommand{\new}[1]{{ 
+    \color{green!50!black}\footnotesize
+    [\textbf{\textsf{New}}: {#1}]}}
+
+%% FRAMES (mdframed package)
+\global\mdfdefinestyle{flipbox}{%
+  linecolor=green!50!black,linewidth=1pt,%
+  leftmargin=0cm, rightmargin=0cm
+  } 
+
+
+\newenvironment{flipcomment}
+  {
+    \begin{mdframed}[style=flipbox] 
+    \color{green!50!black}
+    \sffamily
+    \footnotesize
+    \textbf{\textsf{Flip}}:
+  }{
+    \end{mdframed}
+  }
+
+%% Because mdframed causes a bunch of warnings
+%% https://tex.stackexchange.com/questions/64331/disable-warning-from-mdframed 
+\usepackage{silence}
+\WarningFilter{mdframed}{You got a bad break}
+\WarningFilter{mdframed}{correct box splittet fails}
+
+
+
+%% REMOVE Environment
+%% https://tex.stackexchange.com/a/488582/8094
+%% Creates a nolabel environment that strips all labels
+%% This is useful to avoid multiple label definitions
+%% When marking old versions for deletion
+\usepackage{xparse}
+\ExplSyntaxOn
+\NewDocumentEnvironment{nolabel}{}{
+  \cs_set_eq:NN \label \use_none:n
+  \cs_set_eq:cN { ltx@label} \use_none:n
+}{}
+\ExplSyntaxOff 
+
+\newcommand{\remove}[1]{{
+  \begin{nolabel} 
+    \color{red!50!black}\footnotesize
+    [\textbf{\textsf{Removed}}: {#1}]
+    \end{nolabel}
+    }}
+
+
+%% COMMON PHYSICS MACROS
+%% ---------------------
+\renewcommand{\tilde}{\widetilde}                 % tilde over characters
+\renewcommand{\text}{\textnormal}	                % text in equations 
+\renewcommand{\vec}[1]{\mathbf{#1}}               % vectors are boldface
+
+%% Differential and differential/2pi
+% \newcommand{\dbar}{d\mkern-6mu\mathchar'26}     % for d/2pi
+\newcommand{\dbar}{d\mkern-6mu\mathchar'26\hspace{-.1em}}    
+
+%% Best practice: Roman differential
+\newcommand{\D}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\Dbar}[1]{\operatorname{d}\mkern-10mu\mathchar'26\mkern-2mu{#1}} 
+
+\newcommand{\ket}[1]{\left|#1\right\rangle}       % <#1|
+\newcommand{\bra}[1]{\left\langle#1\right|}       % |#1>
+\newcommand*{\trans}{\mkern-1.5mu\mathsf{T}}      % transpose
+
+
+%% Matrices
+%% --------
+\newcommand{\aij}[2]{^{#1}_{\phantom{#1}#2}}
+\newcommand{\mat}[3]{#1\aij{#2}{#3}}
+\newcommand{\pp}{\phantom{+}}                     % phantom + for spacing
+\newcommand{\inv}{^{-1}}
+\newcommand{\one}{\mathbbm{1}}
+\newcommand{\Tr}{\text{Tr}\,}
+\newcommand{\RR}{\mathbbm{R}}
+\newcommand{\CC}{\mathbbm{C}}
+
+
+% Make my life easer
+% ------------------
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand*{\smallslot}{\,\underline{\makebox[0.80em]{\ensuremath{}}}\,}
+
+
+\usepackage{scalerel} % https://tex.stackexchange.com/a/523873/8094
+\newcommand*{\paral}{{\stretchrel*{\parallel}{\perp}}}
+
+
+\usepackage{pifont}
+  \newcommand{\cmark}{\ding{51}}%
+  \newcommand{\xmark}{\ding{55}}%
