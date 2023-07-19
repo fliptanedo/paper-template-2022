@@ -14,7 +14,7 @@
     \label{fig:figure:example}
 \end{figure}
 
-Use \textbackslash\texttt{centering} rather than the \texttt{center} environment in figure environments to avoid adding extra vertical space.\footnote{\url{https://tex.stackexchange.com/a/23653/8094}}
+Use \textbackslash\texttt{centering} rather than the \texttt{center} environment in figure environments to avoid adding extra vertical space.\footnote{\url{https://tex.stackexchange.com/a/23653/8094}\label{foot:centering}}
 
 
 \begin{wrapfigure}{l}{0.3\textwidth}
@@ -101,10 +101,11 @@ Use \textbackslash\texttt{centering} rather than the \texttt{center} environment
 
 
 \section{Labels and cleveref}
-\label{sec:cleveref}
+\label{sec:labels:and:cleveref}
 
 
 \subsection{\texorpdfstring{\texttt{cleveref}}{cleveref}}
+\label{sec:cleveref}
 
 \texttt{cleveref} is a handy package when referring to ranges of equations. 
 
@@ -126,7 +127,8 @@ The equations above are (glomped together)
 	\item Using \texttt{cleverefs}'s \texttt{cref}: \cref{eq:vector,eq:pseudo,eq:axial,eq:scalar}
 \end{itemize}
 
-The sections above are \cref{sec:macros,sec:cleveref,sec:figs,sec:tables}.
+\texttt{cleveref} automatically identifies the type of object it is referring to. Thus you can use \textbackslash\texttt{cref} to refer to any label, for example \cref{foot:centering}. You can use \textbackslash\texttt{Cref} to have a capitalized the cross reference name. For example: the sections above are \Cref{sec:macros,sec:cleveref,sec:figs,sec:tables}.
+
 
 
 \subsection{Sub-equations}
@@ -137,7 +139,7 @@ One can also wrap a \texttt{align} environment with a \texttt{subequations} envi
 	a &= \pi 
 	\label{eq:subequation:1}
 	\\
-	b &= e^{i\pi} 
+	b &= \e^{i\pi} 
 	\ .
 	\label{eq:subequation:2}
 \end{align}
@@ -195,6 +197,17 @@ This is an extended comment that shows up as a text box. I might use this to mak
 \end{flipcomment}
 
 
+\subsection{Writing Macros}
+
+The \textbackslash\texttt{xspace} command is useful at the end of a macro. It stands for: ``insert a space if and only if there is supposed to be a space.'' Consider the following examples:
+\begin{itemize}
+	\item Without \texttt{xspace}: \LaTeX typesetting...
+	\item With \texttt{xspace}: \LaTeX\xspace typesetting...
+	\item Without \texttt{xspace}: Typeset with \LaTeX.
+	\item With \texttt{xspace}: Typeset with \LaTeX\xspace.
+\end{itemize}
+
+
 \section{Mathematics and Physics}
 
 \subsection{Environments}
@@ -221,7 +234,7 @@ Use a tie (tilde) to enforce a non-breaking short space between a number and its
 These come from the \acro{ISO 80000} standards for typesetting mathematics and physics.\footnote{See discussion in \url{https://tex.stackexchange.com/questions/14821/whats-the-proper-way-to-typeset-a-differential-operator}} It is not obvious to me that these are applicable to the typographical culture of physics, but the most important thing is to be consistent.
 \begin{itemize}
 	\item Units are always upright, \textmu m is a micrometer. You can use various unit packages to do this automatically. 
-	\item The base of the natural logarithm is upright $\mathrm{e}^{i\pi}$ versus $e^{i\pi}$.
+	\item The base of the natural logarithm is upright $\e^{i\pi}$ versus $e^{i\pi}$.
 	\item The differential is an operator so it should be upright. I have macros for this: $dx$ vs.~$\D{x}$ and $\dbar p$ vs.~$\Dbar{p}$. The \texttt{physics} package has macros for this. 
 \end{itemize}
 There is a historical discussion on \texttt{hsm.stackexchange}\footnote{\url{https://hsm.stackexchange.com/questions/6727/fracdydx-versus-frac-mathrm-dy-mathrm-dx}}.
@@ -233,9 +246,13 @@ There is a historical discussion on \texttt{hsm.stackexchange}\footnote{\url{htt
 
 \begin{itemize}
 	\item Use $\mid$ instead of pipe for conditions: $p(x\mid y)$ versus $p(x|y)$.
+	% 
 	\item Transpose: The \acro{ISO}~80000 standard has suggestions. $A^T$ vs $A^\top$ vs $A^{\trans}$. I personally prefer $A^\text{T}$.
+	% 
 	\item \textbf{Textual subscripts}: sometimes you have a subscript that is not an index, but shorthand for something textual. For example, the Green's function with Dirichlet boundary conditions is $G_\textnormal{D}$. The subscript is upright, not italicized, $G_D$. Use the \texttt{textnormal} command rather than the \texttt{text} command since this will automatically use the correct size. Comparison: $G_\textnormal{D},\, G_\text{D}$.
+	% 
 	\item Arrows with text under them: \texttt{xrightarrow} in the \texttt{amsmath} package. The square bracketed argument is under, the curly bracketed argument is over. Example: $\xrightarrow[\textnormal{low}]{\textnormal{hi}}$.
+	% 
 \end{itemize}
 
 
@@ -253,22 +270,24 @@ You can use \textbackslash\texttt{DeclareMathOperator} for functions that are no
 
 \subsection{Manual Spacing}
 
-\LaTeX has commands for manually inserting spacing: thin\,space, medium\:space, thick\;space, thin\!negative\!space.
+\LaTeXx has commands for manually inserting spacing: thin\,space, medium\:space, thick\;space, thin\!negative\!space.
 
 
 \subsection{Ties create non-breaking spaces}
 
-\LaTeX interprets periods as full stops (end of a sentence). It places extra space after the full stop. Use a \textbf{tie} (tilde) when a period is not a full stop: Mr.~Roboto versus Mr. Roboto. 
+\LaTeXx interprets periods as full stops (end of a sentence). It places extra space after the full stop. Use a \textbf{tie} (tilde) when a period is not a full stop: Mr.~Roboto versus Mr. Roboto. 
 % 
-You can also use ties this whenever you want to prevent a line break between words. \LaTeX interprets the tied words as a single word.
+You can also use ties this whenever you want to prevent a line break between words. \LaTeXx interprets the tied words as a single word.
+% 
+Ties are also standard for citations$\sim$\textbackslash\texttt{cite}\{\texttt{citation}\}.
 
 
 
 \section{Some Best Practices}
 
-\subsection{\texorpdfstring{\LaTeX\, in a title}{LaTeX in a title}}
+\subsection{\texorpdfstring{\LaTeXx in a title}{LaTeX in a title}}
 
-When using \LaTeX code in a section title, use the \texttt{texorpdfstring} command to define an \acro{UTF-8} string that the pdf can use for bookmarks. If you do not do this, there are annoying compilation warnings.
+When using \LaTeXx code in a section title, use the \texttt{texorpdfstring} command to define an \acro{UTF-8} string that the pdf can use for bookmarks. If you do not do this, there are annoying compilation warnings.
 
 
 \subsection{Ranges}

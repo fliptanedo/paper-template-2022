@@ -10,8 +10,24 @@
 	\color{blue!50!black}\footnotesize
 	[\textbf{\textsf{YourName}}: \textsf{#1}]}}
 
-%% ACRONYMS
+%% ACRONYMS and MACROS
 \newcommand{\DM}{\acro{DM}\xspace}		% nb: I do not like using this
+\newcommand{\e}{\textnormal{e}\xspace}	% base of natural log
 
+%% RENEW COMMANDS, example
+\newcommand{\LaTeXx}{\LaTeX\xspace}
 
+%% More spacing between table columns
+% \setlength{\tabcolsep}{12pt}
+
+%% EXAMPLE: framed environments
+\newmdtheoremenv[
+    skipabove=2em,
+    skipbelow=2em,
+    linewidth=5pt,
+    linecolor=red!50!black,
+    topline=false,
+    rightline=false,
+    bottomline=false
+    ]{exercise}{Exercise}[section]
 
