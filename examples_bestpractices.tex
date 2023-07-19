@@ -3,7 +3,7 @@
 
 \section{\texorpdfstring{\LaTeXx Style}{LaTeX Style}}
 
-There is not a definitive \LaTeXx style guide analogous to \acro{PEP-8}. However, I do have my own set of preferences. Here style refers to how the \LaTeXx source files are written. Two \texttt{tex} files may produce identical \texttt{pdf} outputs but be stylistically different. A well styled document is that is as easy as possible to parse and edit as a human being.
+There is not a definitive \LaTeXx style guide analogous to \acro{PEP-8}. However, I do have my own set of preferences. Here style refers to how the \LaTeXx source files are written. Two \texttt{tex} files may produce identical \texttt{pdf} outputs but be stylistically different. A well styled document is that is as easy as possible to parse and edit as a human being. I have done my best to keep the source files for \emph{this} template well styled.
 
 
 \subsection{Idiosyncracies}
@@ -112,7 +112,6 @@ There is a narrow range of tech-savvy for which this `trick' is useful: one has 
 This latter point is what can drive a collaborator crazy: some \LaTeXx editors look for \textbackslash\texttt{begin}--\textbackslash\texttt{end} pairs to identify math mode and highlight text in a helpful way. Macros like \texttt{be} and \texttt{ee} screw this up and can lead to linter warnings. In summary, do not define macros to simplify environments.
 
 
-
 \subsection{Labels}
 
 Labels should be descriptive, even if that means that they labels become a bit lengthy. Each label should start with some indication of what it is labeling, \texttt{eq} for equation or \texttt{fig} for figure, for example. Use colons to separate words.
@@ -149,6 +148,7 @@ Here's what you are allowed to sacrifice in order to meet these goals:
 
 
 \subsection{Style Guide}
+
 \begin{itemize}
 	\item Use \texttt{hyperref}. Modern documents should be internally and externally hyperlinked. Clicking on a reference to an equation should bring the reader to that equation. Use a bibliography style that allows hyperlinks to the \texttt{arXiv}.
 \end{itemize}

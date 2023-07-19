@@ -1,9 +1,7 @@
 %!TEX root = paper.tex
 %% Update the above with the appropriate root
 
-
 \section{Common environments}
-
 
 \subsection{Figures: floating and wrapped}
 
@@ -15,7 +13,6 @@
 \end{figure}
 
 Use \textbackslash\texttt{centering} rather than the \texttt{center} environment in figure environments to avoid adding extra vertical space.\footnote{\url{https://tex.stackexchange.com/a/23653/8094}\label{foot:centering}}
-
 
 \begin{wrapfigure}{l}{0.3\textwidth}
 	\includegraphics[width=0.9\linewidth]{example-image-a}
@@ -103,7 +100,6 @@ Use \textbackslash\texttt{centering} rather than the \texttt{center} environment
 \section{Labels and cleveref}
 \label{sec:labels:and:cleveref}
 
-
 \subsection{\texorpdfstring{\texttt{cleveref}}{cleveref}}
 \label{sec:cleveref}
 
@@ -128,7 +124,6 @@ The equations above are (glomped together)
 \end{itemize}
 
 \texttt{cleveref} automatically identifies the type of object it is referring to. Thus you can use \textbackslash\texttt{cref} to refer to any label, for example \cref{foot:centering}. You can use \textbackslash\texttt{Cref} to have a capitalized the cross reference name. For example: the sections above are \Cref{sec:macros,sec:cleveref,sec:figs,sec:tables}.
-
 
 
 \subsection{Sub-equations}
@@ -208,6 +203,7 @@ The \textbackslash\texttt{xspace} command is useful at the end of a macro. It st
 \end{itemize}
 
 
+
 \section{Mathematics and Physics}
 
 \subsection{Environments}
@@ -240,9 +236,7 @@ These come from the \acro{ISO 80000} standards for typesetting mathematics and p
 There is a historical discussion on \texttt{hsm.stackexchange}\footnote{\url{https://hsm.stackexchange.com/questions/6727/fracdydx-versus-frac-mathrm-dy-mathrm-dx}}.
 
 
-
 \subsection{Miscellaneous}
-
 
 \begin{itemize}
 	\item Use $\mid$ instead of pipe for conditions: $p(x\mid y)$ versus $p(x|y)$.
@@ -254,6 +248,7 @@ There is a historical discussion on \texttt{hsm.stackexchange}\footnote{\url{htt
 	\item Arrows with text under them: \texttt{xrightarrow} in the \texttt{amsmath} package. The square bracketed argument is under, the curly bracketed argument is over. Example: $\xrightarrow[\textnormal{low}]{\textnormal{hi}}$.
 	% 
 \end{itemize}
+
 
 
 \section{Space}
@@ -300,3 +295,16 @@ Hyphens, en dashes, em dashes, and minus signs in math mode are all grammaticall
 \end{itemize}
 
 
+
+\subsection{References}
+
+Use \BibTeX\xspace. There are any number of \BibTeX\xspace managers. One that I like is Yuji Tachikawa's \texttt{spires.app}\footnote{\url{https://member.ipmu.jp/yuji.tachikawa/spires/}}; it links directly to the inSpire \acro{HEP} database. For styling, I recommend Jacques Distler's \texttt{utcaps.bst} which is a nice format that automatically inserts a hyper link to the \texttt{arXiv} version of a paper. If yo are fancy you may use {\rm B\kern-.05em{\sc i\kern-.025em b}\LaTeXx. 
+
+
+Standard citation managers with \BibTeX\xspace capability make a big deal about assigning unique \BibTeX\xspace citation keys to each reference. This can be tedious if you have to collaborate with someone else who has made up their own citation keys. Fortunately, in my field there is a single recognized database, inSpire\footnote{\url{https://inspirehep.net}; see also \acro{NASA/ADS} for astronomy.}, that assigns a unique \BibTeX entry for papers.  This means that it is good practice to select keys as follows:
+\begin{itemize}
+	\item If it exists, use the inSpire key. Tools like \texttt{spires.app} default to this key.
+	\item If inSpire does not have the reference, use \acro{NASA/ADS}.
+	\item If neither of those databases has the references, find a simple algorithm that all of your coauthors can agree upon. 
+\end{itemize}
+Items in the third category are usually books and websites. 
