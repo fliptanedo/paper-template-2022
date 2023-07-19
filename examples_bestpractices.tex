@@ -146,9 +146,39 @@ Here's what you are allowed to sacrifice in order to meet these goals:
 \end{enumerate}
 
 
-
-\subsection{Style Guide}
+\subsection{\texorpdfstring{\LaTeXx Style Guide}{LaTeX Style Guide}}
 
 \begin{itemize}
 	\item Use \texttt{hyperref}. Modern documents should be internally and externally hyperlinked. Clicking on a reference to an equation should bring the reader to that equation. Use a bibliography style that allows hyperlinks to the \texttt{arXiv}.
+	\item In \emph{informal} documents like this, I refer to websites (usually Stack Exchange) with a footnote and a hyperlink:
+	% 
+\begin{lstlisting}[style=latexstyle]
+...a great website.%
+\footnote{\url{https://www...}}
+\end{lstlisting}
+	% 
+	This avoids having to use \BibTeX for one-off references and makes the reference easily clickable. 
+	% 
+\end{itemize}
+
+
+\subsection{Copy Editing Style Guide}
+
+These are non-specific style points:
+
+\begin{itemize}
+	\item Footnotes go after punctuation.%
+			\footnote{Like this.}
+	\item Use whitespace to separate footnotes:
+	% 
+\begin{lstlisting}[style=latexstyle]
+We now make an important%
+  \footnote{
+	Observe the comment and whitespace.
+	There is no additional spacing between
+	`important' and this footnote. }
+point about style.
+\end{lstlisting}
+	%
+	\item You may consider using \textbackslash\texttt{frenchspacing} in your document.\footnote{Hat tip to Eddie Kohler, \url{https://www.read.seas.harvard.edu/~kohler/latex.html}}
 \end{itemize}

@@ -210,6 +210,8 @@ The \textbackslash\texttt{xspace} command is useful at the end of a macro. It st
 
 Use the \texttt{align} environment instead of \texttt{eqnarray}, see the TeXblog discussion\footnote{\url{https://texblog.net/latex-archive/maths/eqnarray-align-environment/}}. The double dollar sign notation for \texttt{displaymath} is depreciated.\footnote{\url{https://tex.stackexchange.com/questions/503/why-is-preferable-to}} The suggested alternative is \textbackslash\texttt{[} and \textbackslash\texttt{]}, though this is rather annoying. As a default I always use \texttt{align}.
 
+Single dollar sign notation is also depreciated relative to \textbackslash\texttt{(} and \textbackslash\texttt{)} for inline text. Unfortunately for standards, I am stubborn about keeping in-line text as simple as possible. The dollar sign is a single character and it is visually easier to identify as a delimiter for math mode. I thus continue using single dollar signs for inline mathematics. 
+
 
 \subsection{Text and Math: super- and subscripts}
 
@@ -222,12 +224,12 @@ One place this shows up is if you have a subscript that is not a mathematical va
 
 \subsection{Units and spacing}
 
-Use a tie (tilde) to enforce a non-breaking short space between a number and its units: $0.5~\text{MeV}$. Units should not be italicized.
+Use a tie (tilde) to enforce a non-breaking short space between a number and its units: $0.5~\text{MeV}$. Units should not be italicized. If you want to be svelte you can use a thin space, \textbackslash\texttt{,}.
 
 
 \subsection{Upright characters}
 
-These come from the \acro{ISO 80000} standards for typesetting mathematics and physics.\footnote{See discussion in \url{https://tex.stackexchange.com/questions/14821/whats-the-proper-way-to-typeset-a-differential-operator}} It is not obvious to me that these are applicable to the typographical culture of physics, but the most important thing is to be consistent.
+These come from the \acro{ISO 80000} standards for typesetting mathematics and physics.\footnote{See discussion in \url{https://tex.stackexchange.com/q/14821/8094}} It is not obvious to me that these are applicable to the typographical culture of physics, but the most important thing is to be consistent.
 \begin{itemize}
 	\item Units are always upright, \textmu m is a micrometer. You can use various unit packages to do this automatically. 
 	\item The base of the natural logarithm is upright $\e^{i\pi}$ versus $e^{i\pi}$.
@@ -292,6 +294,7 @@ Hyphens, en dashes, em dashes, and minus signs in math mode are all grammaticall
 	\item En dashes replace hyphens in a compound adjective where one of the elements is a two-word compound: `post--Cold War era.'\footnote{From \url{https://www.merriam-webster.com/words-at-play/em-dash-en-dash-how-to-use}}
 	\item En dashes are used for combinations of two names in place of the wordd `and'. Randall--Sundrum model.
 	\item For compound names of a single person, use a hyphen: Levi-Civita.
+	\item A minus sign should be typeset in math mode, $-1$.
 \end{itemize}
 
 
