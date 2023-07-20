@@ -35,22 +35,23 @@ The contents of a mathematics environment should use ample white space to separa
 % 
 \begin{lstlisting}[style=latexstyle]
 \begin{align}
-	S_{\textnormal{fix}}^{\textnormal{Bulk}}
-	& =
-	\frac{-1}{g^2} 
-	\int d^{d+1} x  
-	\left( \frac{R}{z} \right)^{\!d-3}
-	\frac{1}{2\xi}
-	\left[
-	    \partial_\mu A^\mu
-	    -
-	    \xi\left( 
-	        z^{d-3} 
-	        \partial_z \left( \frac{A_z}{z^{d-3}} \right)
-	        -
-	        \left(\frac{R}{z}\right)^{\!2} g^2 v(z)\, \pi
-	    \right)
-	\right]^2 \ ,
+  S_{\textnormal{fix}}^{\textnormal{Bulk}}
+  & =
+  \frac{-1}{g^2} 
+  \int d^{d+1} x  
+  \left( \frac{R}{z} \right)^{\!d-3}
+  \frac{1}{2\xi}
+  \left[
+    \partial_\mu A^\mu
+    -
+    \xi\left( 
+      z^{d-3} 
+      \partial_z \left( \frac{A_z}{z^{d-3}} \right)
+      -
+      \left( \frac{R}{z} \right)^{\!2} 
+      g^2 v(z) \, \pi
+    \right)
+  \right]^2 \ ,
 \label{eq:SGFBulk}
 \end{align}
 \end{lstlisting}
