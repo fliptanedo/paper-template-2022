@@ -12,7 +12,10 @@
     \label{fig:figure:example}
 \end{figure}
 
-Use \textbackslash\texttt{centering} rather than the \texttt{center} environment in figure environments to avoid adding extra vertical space.\footnote{\url{https://tex.stackexchange.com/a/23653/8094}\label{foot:centering}}
+Use 
+% \textbackslash\texttt{centering}
+\verb!\centering!
+rather than the \texttt{center} environment in figure environments to avoid adding extra vertical space.\footnote{\url{https://tex.stackexchange.com/a/23653/8094}\label{foot:centering}}
 
 \begin{wrapfigure}{l}{0.3\textwidth}
 	\includegraphics[width=0.9\linewidth]{example-image-a}
@@ -123,7 +126,7 @@ The equations above are (glomped together)
 	\item Using \texttt{cleverefs}'s \texttt{cref}: \cref{eq:vector,eq:pseudo,eq:axial,eq:scalar}
 \end{itemize}
 
-\texttt{cleveref} automatically identifies the type of object it is referring to. Thus you can use \textbackslash\texttt{cref} to refer to any label, for example \cref{foot:centering}. You can use \textbackslash\texttt{Cref} to have a capitalized the cross reference name. For example: the sections above are \Cref{sec:macros,sec:cleveref,sec:figs,sec:tables}.
+\texttt{cleveref} automatically identifies the type of object it is referring to. Thus you can use \verb!\cref! to refer to any label, for example \cref{foot:centering}. You can use \verb!\Cref! to have a capitalized the cross reference name. For example: the sections above are \Cref{sec:macros,sec:cleveref,sec:figs,sec:tables}.
 
 
 \subsection{Sub-equations}
@@ -194,7 +197,7 @@ This is an extended comment that shows up as a text box. I might use this to mak
 
 \subsection{Writing Macros}
 
-The \textbackslash\texttt{xspace} command is useful at the end of a macro. It stands for: ``insert a space if and only if there is supposed to be a space.'' Consider the following examples:
+The \verb!\xspace! command is useful at the end of a macro. It stands for: ``insert a space if and only if there is supposed to be a space.'' Consider the following examples:
 \begin{itemize}
 	\item Without \texttt{xspace}: \LaTeX typesetting...
 	\item With \texttt{xspace}: \LaTeX\xspace typesetting...
@@ -208,9 +211,9 @@ The \textbackslash\texttt{xspace} command is useful at the end of a macro. It st
 
 \subsection{Environments}
 
-Use the \texttt{align} environment instead of \texttt{eqnarray}, see the TeXblog discussion\footnote{\url{https://texblog.net/latex-archive/maths/eqnarray-align-environment/}}. The double dollar sign notation for \texttt{displaymath} is depreciated.\footnote{\url{https://tex.stackexchange.com/questions/503/why-is-preferable-to}} The suggested alternative is \textbackslash\texttt{[} and \textbackslash\texttt{]}, though this is rather annoying. As a default I always use \texttt{align}.
+Use the \texttt{align} environment instead of \texttt{eqnarray}, see the TeXblog discussion\footnote{\url{https://texblog.net/latex-archive/maths/eqnarray-align-environment/}}. The double dollar sign notation for \texttt{displaymath} is depreciated.\footnote{\url{https://tex.stackexchange.com/questions/503/why-is-preferable-to}} The suggested alternative is \verb!\[! and \verb!\]!, though this is rather annoying. As a default I always use \texttt{align}.
 
-Single dollar sign notation is also depreciated relative to \textbackslash\texttt{(} and \textbackslash\texttt{)} for inline text. Unfortunately for standards, I am stubborn about keeping in-line text as simple as possible. The dollar sign is a single character and it is visually easier to identify as a delimiter for math mode. I thus continue using single dollar signs for inline mathematics. 
+Single dollar sign \verb!$! notation is also depreciated relative to \verb!\(! and \verb!\)! for inline text. However, I am stubborn about keeping in-line text as simple as possible. The dollar sign is a single character and it is visually easier to identify as a delimiter for math mode. I thus continue using single dollar signs for inline mathematics. 
 
 
 \subsection{Text and Math: super- and subscripts}
@@ -224,7 +227,7 @@ One place this shows up is if you have a subscript that is not a mathematical va
 
 \subsection{Units and spacing}
 
-Use a tie (tilde) to enforce a non-breaking short space between a number and its units: $0.5~\text{MeV}$. Units should not be italicized. If you want to be svelte you can use a thin space, \textbackslash\texttt{,}.
+Use a tie (tilde) to enforce a non-breaking short space between a number and its units: $0.5~\text{MeV}$. Units should not be italicized. If you want to be svelte you can use a thin space, \verb!\,!.
 
 
 \subsection{Upright characters}
@@ -262,7 +265,23 @@ Math operators have a natural spacing before and after depending on the context.
 \end{align}
 The space on either side of $\log$ indicate that $\log$ is a mathematical operator. The second example still has the space between $a$ and $\log$, but has no space between $\log$ and $(bc)$ because the parenthesis belongs to the mathematical function.\footnote{Example from \url{https://tex.stackexchange.com/a/140647}}
 % 
-You can use \textbackslash\texttt{DeclareMathOperator} for functions that are not built in.
+You can use \verb!\DeclareMathOperator! for functions that are not built in.
+
+Using \verb!\left(! and \verb!\right)! will automatically size parentheses, but can mess up kerning:
+\begin{align}
+	f(x)
+	f\left(x\right)
+	f{\left(x\right)}
+	&
+	&
+	\cos(x)
+	\cos\left(x\right)
+	\cos{\left(x\right)}
+	{\cos}{\left(x\right)}
+	\ .
+\end{align}
+The crude way to fix this is to put braces around the parentheses: \verb!{\left(x\right)}!.\footnote{\url{https://tex.stackexchange.com/a/2610/8094}}. However, if the parenthesis is attached to a mathematical operators, the operator must also be surrounded by braces: \verb!{\cos}!. In the examples above, you can see the effect of the braces on the spacing on either side.
+
 
 
 \subsection{Manual Spacing}
@@ -276,7 +295,7 @@ You can use \textbackslash\texttt{DeclareMathOperator} for functions that are no
 % 
 You can also use ties this whenever you want to prevent a line break between words. \LaTeXx interprets the tied words as a single word.
 % 
-Ties are also standard for citations$\sim$\textbackslash\texttt{cite}\{\texttt{citation}\}.
+Ties are also standard for citations\verb!~\cite{citation}!.
 
 
 
@@ -298,7 +317,6 @@ Hyphens, en dashes, em dashes, and minus signs in math mode are all grammaticall
 \end{itemize}
 
 
-
 \subsection{References}
 
 Use \BibTeX\xspace. There are any number of \BibTeX\xspace managers. One that I like is Yuji Tachikawa's \texttt{spires.app}\footnote{\url{https://member.ipmu.jp/yuji.tachikawa/spires/}}; it links directly to the inSpire \acro{HEP} database. For styling, I recommend Jacques Distler's \texttt{utcaps.bst} which is a nice format that automatically inserts a hyper link to the \texttt{arXiv} version of a paper. If yo are fancy you may use {\rm B\kern-.05em{\sc i\kern-.025em b}\LaTeXx. 
@@ -311,3 +329,21 @@ Standard citation managers with \BibTeX\xspace capability make a big deal about 
 	\item If neither of those databases has the references, find a simple algorithm that all of your coauthors can agree upon. 
 \end{itemize}
 Items in the third category are usually books and websites. 
+
+
+
+\section{Neat examples}
+
+Suppose you would like to repeat and equation reference,
+\begin{align}
+	e^{i\pi} &= -1 
+	\ .
+	\label{eq:e:ipi}
+\end{align}
+Remember that equation above? Let's write it again,
+\begin{align}
+	e^{i\pi} &= -1 
+	\ .
+	\tag{\ref{eq:e:ipi}}
+\end{align}
+Observe that these have the same equation number. Instead of \texttt{label} we use \texttt{tag} with argument \texttt{ref}.
