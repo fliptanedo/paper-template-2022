@@ -12,6 +12,31 @@
     \label{fig:figure:example}
 \end{figure}
 
+
+\begin{figure}%[th]
+    \centering
+	\begin{subfigure}{0.3\textwidth}
+    \centering
+        \includegraphics[width=\linewidth]{example-image-a}
+        \caption{First subfig}
+        \label{fig:subfig:1}
+    \end{subfigure}\;%
+    \begin{subfigure}{0.3\textwidth}
+    \centering
+        \includegraphics[width=\linewidth]{example-image-a}
+        \caption{Second subfig}
+        \label{fig:subfig:2}
+    \end{subfigure}\;%
+    \begin{subfigure}{0.3\textwidth}
+    \centering
+        \includegraphics[width=\linewidth]{example-image-a}
+        \caption{Third subfig}
+        \label{fig:subfig:3}
+    \end{subfigure}%
+    \caption{Here's how to use subfigures}
+    \label{fig:figure:example}
+\end{figure}
+
 Use 
 % \textbackslash\texttt{centering}
 \verb!\centering!
@@ -235,10 +260,10 @@ Use a tie (tilde) to enforce a non-breaking short space between a number and its
 These come from the \acro{ISO 80000} standards for typesetting mathematics and physics.\footnote{See discussion in \url{https://tex.stackexchange.com/q/14821/8094}} It is not obvious to me that these are applicable to the typographical culture of physics, but the most important thing is to be consistent.
 \begin{itemize}
 	\item Units are always upright, \textmu m is a micrometer. You can use various unit packages to do this automatically. 
-	\item The base of the natural logarithm is upright $\e^{i\pi}$ versus $e^{i\pi}$.
+	\item The base of the natural logarithm is upright $\e^{i\pi}$ versus $e^{i\pi}$. The best physics argument is to avoid confusion between the exponential $\e$ and the electric coupling $\alpha = e^2/4\pi$.\footnote{I thank Matt Reece for pointing this out to me.}
 	\item The differential is an operator so it should be upright. I have macros for this: $dx$ vs.~$\D{x}$ and $\dbar p$ vs.~$\Dbar{p}$. The \texttt{physics} package has macros for this. 
 \end{itemize}
-There is a historical discussion on \texttt{hsm.stackexchange}\footnote{\url{https://hsm.stackexchange.com/questions/6727/fracdydx-versus-frac-mathrm-dy-mathrm-dx}}.
+There is a historical discussion on \texttt{hsm.stackexchange}\footnote{\url{https://hsm.stackexchange.com/questions/6727/fracdydx-versus-frac-mathrm-dy-mathrm-dx}}. 
 
 
 \subsection{Miscellaneous}
@@ -297,6 +322,12 @@ You can also use ties this whenever you want to prevent a line break between wor
 % 
 Ties are also standard for citations\verb!~\cite{citation}!.
 
+
+\subsection{\texorpdfstring{\texttt{xspace}}{xspace}}
+
+One should consider \verb!\xspace! depreciated. It can be useful for spacing with user-defined macros. However, the results can be unreliable.\footnote{\url{https://tex.stackexchange.com/a/86620/8094}}  For example, one could define \verb!\newcommand{\test}{{test}\xspace}!, note the extra pair of braces in the definition. Even though there is an \verb!\xspace!, this command will fail to place a space between \verb!\test \test!. This type of problem shows up for me because I have a macro \verb!\acro{}! for making acronyms smaller. If I define a shortcut \verb!\newcommand{\DM}{\acro{DM}}! then there is no space between \verb!\DM \test!. The result is: \acro{DM}\xspace {test}. 
+
+The suggested practice is to end your commands with empty braces or a slash: \verb!\DM{}! or \verb!\DM\!. All spacing works out as intended. 
 
 
 \section{Some Best Practices}
