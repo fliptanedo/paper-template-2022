@@ -324,7 +324,23 @@ The crude way to fix this is to put braces around the parentheses: \verb!{\left(
 
 \subsection{Manual Spacing}
 
-\LaTeX{} has commands for manually inserting spacing: thin\,space, medium\:space, thick\;space, thin\!negative\!space.
+\LaTeX{} has commands for manually inserting spacing: 
+\begin{itemize}
+	\item \verb!\,! thin\,space
+	\item \verb!\:! medium\:space
+	\item \verb!\;! thick\;space
+	\item \verb$\!$ thin\!negative\!space.
+		  %% note the use of a different symbol in \verb 		
+\end{itemize}
+The negative space can be helpful for manually adjusting the kerning for large parentheses raised to a power:
+\begin{align}
+	\left(\frac{\pi}{\sum_{i=1}^n x^i}\right)^{d+1}
+	&&
+	\left(\frac{\pi}{\sum_{i=1}^n x^i}\right)^{\!d+1}
+	\ .
+\end{align}
+On the right we use \verb$\right)^{\!d+1}$.
+
 
 
 \subsection{Ties create non-breaking spaces}
@@ -333,7 +349,7 @@ The crude way to fix this is to put braces around the parentheses: \verb!{\left(
 % 
 You can also use ties this whenever you want to prevent a line break between words. \LaTeX{} interprets the tied words as a single word.
 % 
-Ties are also standard for citations\verb!~\cite{citation}!.
+Ties are also standard for citations: \verb!Tanedo et al.~\cite{citation}!.
 
 
 \section{Some Best Practices}
