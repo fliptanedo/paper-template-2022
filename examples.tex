@@ -162,7 +162,7 @@ One can also wrap a \texttt{align} environment with a \texttt{subequations} envi
 	a &= \pi 
 	\label{eq:subequation:1}
 	\\
-	b &= \e^{i\pi} 
+	b &= \e^{\I \pi} 
 	\ .
 	\label{eq:subequation:2}
 \end{align}
@@ -241,6 +241,8 @@ The suggested practice is to end your commands with empty braces or a slash: \ve
 
 
 
+
+
 \section{Mathematics and Physics}
 
 \subsection{Environments}
@@ -287,6 +289,7 @@ There is a historical discussion on \texttt{hsm.stackexchange}\footnote{\url{htt
 	% 
 	\item Arrows with text under them: \texttt{xrightarrow} in the \texttt{amsmath} package. The square bracketed argument is under, the curly bracketed argument is over. Example: $\xrightarrow[\textnormal{low}]{\textnormal{hi}}$.
 	% 
+	\item We can use the $\defeq$ symbol, defined as a macro\footnote{\url{https://tex.stackexchange.com/a/4881/8094}} \verb!\defeq!, to denote assignment . The macro typesets the symbol so that the dots are the same size and aligned with the lines. In pedagogical writing, it may be useful to distinguish between equality $=$, assignment $\defeq$, and tautology $\equiv$. At least that is how I use these.
 \end{itemize}
 
 

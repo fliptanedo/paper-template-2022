@@ -122,3 +122,9 @@
 \usepackage{pifont}
   \newcommand{\cmark}{\ding{51}}%
   \newcommand{\xmark}{\ding{55}}%
+
+% For := with the dots and lines aligned, same size
+% h/t tex.stackexchange.com/a/4881/8094
+\newcommand*{\defeq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+                     \hbox{\scriptsize.}\hbox{\scriptsize.}}}%
+                     =}
