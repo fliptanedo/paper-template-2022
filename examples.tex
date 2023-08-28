@@ -34,7 +34,7 @@
         \label{fig:subfig:3}
     \end{subfigure}%
     \caption{Here's how to use subfigures}
-    \label{fig:figure:example}
+    \label{fig:subfigure:example}
 \end{figure}
 
 Use 
@@ -220,7 +220,7 @@ This is an extended comment that shows up as a text box. I might use this to mak
 \end{flipcomment}
 
 
-\subsection{Writing Macros}
+\subsection{\texorpdfstring{\texttt{xspace}}{xspace}}
 
 The \verb!\xspace! command is useful at the end of a macro. It stands for: ``insert a space if and only if there is supposed to be a space.'' Consider the following examples:
 \begin{itemize}
@@ -229,6 +229,15 @@ The \verb!\xspace! command is useful at the end of a macro. It stands for: ``ins
 	\item Without \texttt{xspace}: Typeset with \LaTeX.
 	\item With \texttt{xspace}: Typeset with \LaTeX\xspace.
 \end{itemize}
+However, one should consider \verb!\xspace! depreciated. It can be useful for spacing with user-defined macros. However, the results can be unreliable.\footnote{\url{https://tex.stackexchange.com/a/86620/8094}}  For example, one could define \verb!\newcommand{\test}{{test}\xspace}!, note the extra pair of braces in the definition. Even though there is an \verb!\xspace!, this command will fail to place a space between \verb!\test \test!. This type of problem shows up for me because I have a macro \verb!\acro{}! for making acronyms smaller. If I define a shortcut \verb!\newcommand{\DM}{\acro{DM}}! then there is no space between \verb!\DM \test!. The result is: \acro{DM}\xspace {test}. 
+
+The suggested practice is to end your commands with empty braces or a slash: \verb!\DM{}! or \verb!\DM\!. All spacing works out as intended. 
+\begin{itemize}
+	\item \verb!\DM{} Halo! produces \DM{} Halo
+	\item \verb!\LaTeX Fails! produces \LaTeX Fails
+	\item \verb!\LaTeX{} Works! produces \LaTeX{} Works!
+\end{itemize}
+
 
 
 
@@ -262,8 +271,9 @@ These come from the \acro{ISO 80000} standards for typesetting mathematics and p
 	\item Units are always upright, \textmu m is a micrometer. You can use various unit packages to do this automatically. 
 	\item The base of the natural logarithm is upright $\e^{i\pi}$ versus $e^{i\pi}$. The best physics argument is to avoid confusion between the exponential $\e$ and the electric coupling $\alpha = e^2/4\pi$.\footnote{I thank Matt Reece for pointing this out to me.}
 	\item The differential is an operator so it should be upright. I have macros for this: $dx$ vs.~$\D{x}$ and $\dbar p$ vs.~$\Dbar{p}$. The \texttt{physics} package has macros for this. 
+	\item You could also do this for the imaginary number: $a+\I b = e^{\I \theta}$. This one is a little trickier to get the spacing right. We use \verb!\newcommand{\I}{\operatorname{i}\mkern-2mu}!.
 \end{itemize}
-There is a historical discussion on \texttt{hsm.stackexchange}\footnote{\url{https://hsm.stackexchange.com/questions/6727/fracdydx-versus-frac-mathrm-dy-mathrm-dx}}. 
+There is a historical discussion on \texttt{hsm.stackexchange}\footnote{\url{https://hsm.stackexchange.com/questions/6727/fracdydx-versus-frac-mathrm-dy-mathrm-dx}}.  For all of these, it helps to define macros. This makes it easy to change the style when you have a co-author who strongly disagrees.
 
 
 \subsection{Miscellaneous}
@@ -311,30 +321,23 @@ The crude way to fix this is to put braces around the parentheses: \verb!{\left(
 
 \subsection{Manual Spacing}
 
-\LaTeXx has commands for manually inserting spacing: thin\,space, medium\:space, thick\;space, thin\!negative\!space.
+\LaTeX{} has commands for manually inserting spacing: thin\,space, medium\:space, thick\;space, thin\!negative\!space.
 
 
 \subsection{Ties create non-breaking spaces}
 
-\LaTeXx interprets periods as full stops (end of a sentence). It places extra space after the full stop. Use a \textbf{tie} (tilde) when a period is not a full stop: Mr.~Roboto versus Mr. Roboto. 
+\LaTeX{} interprets periods as full stops (end of a sentence). It places extra space after the full stop. Use a \textbf{tie} (tilde) when a period is not a full stop: Mr.~Roboto versus Mr. Roboto. 
 % 
-You can also use ties this whenever you want to prevent a line break between words. \LaTeXx interprets the tied words as a single word.
+You can also use ties this whenever you want to prevent a line break between words. \LaTeX{} interprets the tied words as a single word.
 % 
 Ties are also standard for citations\verb!~\cite{citation}!.
 
 
-\subsection{\texorpdfstring{\texttt{xspace}}{xspace}}
-
-One should consider \verb!\xspace! depreciated. It can be useful for spacing with user-defined macros. However, the results can be unreliable.\footnote{\url{https://tex.stackexchange.com/a/86620/8094}}  For example, one could define \verb!\newcommand{\test}{{test}\xspace}!, note the extra pair of braces in the definition. Even though there is an \verb!\xspace!, this command will fail to place a space between \verb!\test \test!. This type of problem shows up for me because I have a macro \verb!\acro{}! for making acronyms smaller. If I define a shortcut \verb!\newcommand{\DM}{\acro{DM}}! then there is no space between \verb!\DM \test!. The result is: \acro{DM}\xspace {test}. 
-
-The suggested practice is to end your commands with empty braces or a slash: \verb!\DM{}! or \verb!\DM\!. All spacing works out as intended. 
-
-
 \section{Some Best Practices}
 
-\subsection{\texorpdfstring{\LaTeXx in a title}{LaTeX in a title}}
+\subsection{\texorpdfstring{\LaTeX{} in a title}{LaTeX in a title}}
 
-When using \LaTeXx code in a section title, use the \texttt{texorpdfstring} command to define an \acro{UTF-8} string that the pdf can use for bookmarks. If you do not do this, there are annoying compilation warnings.
+When using \LaTeX{} code in a section title, use the \texttt{texorpdfstring} command to define an \acro{UTF-8} string that the pdf can use for bookmarks. If you do not do this, there are annoying compilation warnings.
 
 
 \subsection{Ranges}
@@ -351,7 +354,7 @@ The choice between a hyphen and en dash can be tricky. For example \acro{APS} se
 
 \subsection{References}
 
-Use \BibTeX\xspace. There are any number of \BibTeX\xspace managers. One that I like is Yuji Tachikawa's \texttt{spires.app}\footnote{\url{https://member.ipmu.jp/yuji.tachikawa/spires/}}; it links directly to the inSpire \acro{HEP} database. For styling, I recommend Jacques Distler's \texttt{utcaps.bst} which is a nice format that automatically inserts a hyper link to the \texttt{arXiv} version of a paper. If yo are fancy you may use {\rm B\kern-.05em{\sc i\kern-.025em b}\LaTeXx. 
+Use \BibTeX\xspace. There are any number of \BibTeX\xspace managers. One that I like is Yuji Tachikawa's \texttt{spires.app}\footnote{\url{https://member.ipmu.jp/yuji.tachikawa/spires/}}; it links directly to the inSpire \acro{HEP} database. For styling, I recommend Jacques Distler's \texttt{utcaps.bst} which is a nice format that automatically inserts a hyper link to the \texttt{arXiv} version of a paper. If yo are fancy you may use {\rm B\kern-.05em{\sc i\kern-.025em b}\LaTeX{}. 
 
 
 Standard citation managers with \BibTeX\xspace capability make a big deal about assigning unique \BibTeX\xspace citation keys to each reference. This can be tedious if you have to collaborate with someone else who has made up their own citation keys. Fortunately, in my field there is a single recognized database, inSpire\footnote{\url{https://inspirehep.net}; see also \acro{NASA/ADS} for astronomy.}, that assigns a unique \BibTeX entry for papers.  This means that it is good practice to select keys as follows:
@@ -368,13 +371,13 @@ Items in the third category are usually books and websites.
 
 Suppose you would like to repeat and equation reference,
 \begin{align}
-	e^{i\pi} &= -1 
+	e^{\I\pi} &= -1 
 	\ .
 	\label{eq:e:ipi}
 \end{align}
 Remember that equation above? Let's write it again,
 \begin{align}
-	e^{i\pi} &= -1 
+	e^{\I\pi} &= -1 
 	\ .
 	\tag{\ref{eq:e:ipi}}
 \end{align}

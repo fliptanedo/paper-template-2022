@@ -1,14 +1,14 @@
 %!TEX root = paper.tex
 %% Update the above with the appropriate root
 
-\section{\texorpdfstring{\LaTeXx Style}{LaTeX Style}}
+\section{\texorpdfstring{\LaTeX{} Style}{LaTeX Style}}
 
-There is not a definitive \LaTeXx style guide analogous to \acro{PEP-8}. However, I do have my own set of preferences. Here style refers to how the \LaTeXx source files are written. Two \texttt{tex} files may produce identical \texttt{pdf} outputs but be stylistically different. A well styled document is that is as easy as possible to parse and edit as a human being. I have done my best to keep the source files for \emph{this} template well styled.
+There is not a definitive \LaTeX{} style guide analogous to \acro{PEP-8}. However, I do have my own set of preferences. Here style refers to how the \LaTeX{} source files are written. Two \texttt{tex} files may produce identical \texttt{pdf} outputs but be stylistically different. A well styled document is that is as easy as possible to parse and edit as a human being. I have done my best to keep the source files for \emph{this} template well styled.
 
 
 \subsection{Idiosyncracies}
 
-While some coding style guides require a fixed width for the document. This gives meaning to a line of code and makes the resulting source more readable by avoiding unintentional text wrapping. \LaTeXx is a bit different in that it is a typesetting language that is meant to handle paragraphs of text. Because modern editors naturally have text wrapping options, I do not feel strongly about enforcing a document-wide character width limit. Paragraphs of text should be allowed to wrap if that makes sense. However, mathematics environments should strive to make use of white space in service to readability.
+While some coding style guides require a fixed width for the document. This gives meaning to a line of code and makes the resulting source more readable by avoiding unintentional text wrapping. \LaTeX{} is a bit different in that it is a typesetting language that is meant to handle paragraphs of text. Because modern editors naturally have text wrapping options, I do not feel strongly about enforcing a document-wide character width limit. Paragraphs of text should be allowed to wrap if that makes sense. However, mathematics environments should strive to make use of white space in service to readability.
 
 
 \subsection{Spacing and Indents}
@@ -38,7 +38,8 @@ The contents of a mathematics environment should use ample white space to separa
   S_{\textnormal{fix}}^{\textnormal{Bulk}}
   & =
   \frac{-1}{g^2} 
-  \int d^{d+1} x  
+  % \int d^{d+1} x  
+  \int \DD{d+1}{x}
   \left( \frac{R}{z} \right)^{\!d-3}
   \frac{1}{2\xi}
   \left[
@@ -61,7 +62,8 @@ This produces the following:
 	S_{\textnormal{fix}}^{\textnormal{Bulk}}
 	& =
 	\frac{-1}{g^2} 
-	\int d^{d+1} x  
+	% \int d^{d+1} x  
+	\int \DD{d+1}{x}  
 	\left( \frac{R}{z} \right)^{\!d-3}\frac{1}{2\xi}
 	\left[
 	    \partial_\mu A^\mu
@@ -91,7 +93,7 @@ This may seem like overkill, but in an expression with multiple fractions it is 
 
 \subsection{When (not) to use macros}
 
-Use macros (\texttt{newcommand} or \texttt{renewcommand}) when there is an expression that you use often \emph{and that you may want to change in the future}. Perhaps you have a variable that needs to be used uniformly across a document, but whose specific symbol may change. Use a macro and make it easy to change that symbol without doing a find-and-replace. Macros are also useful for making \LaTeXx source more readable by truncating a tedious series of commands. 
+Use macros (\texttt{newcommand} or \texttt{renewcommand}) when there is an expression that you use often \emph{and that you may want to change in the future}. Perhaps you have a variable that needs to be used uniformly across a document, but whose specific symbol may change. Use a macro and make it easy to change that symbol without doing a find-and-replace. Macros are also useful for making \LaTeX{} source more readable by truncating a tedious series of commands. 
 
 However, do not use a macro just because it will make your life easier in the moment. One good reason \emph{not} to use a macro is as a shortcut for defining an environment. There is a `old style' of source preparation where someone will define macros:
 % 
@@ -110,7 +112,7 @@ This seems like a shortcut because it saves you the trouble of writing
 % 
 There is a narrow range of tech-savvy for which this `trick' is useful: one has to be sophisticated enough where typing in six characters rather than thirty-one characters will save significant time, but one must also be na\"ive enough to not use a text editor that can do (1) text expansions or (2) context-aware text highlighting. 
 % 
-This latter point is what can drive a collaborator crazy: some \LaTeXx editors look for \textbackslash\texttt{begin}--\textbackslash\texttt{end} pairs to identify math mode and highlight text in a helpful way. Macros like \texttt{be} and \texttt{ee} screw this up and can lead to linter warnings. In summary, do not define macros to simplify environments.
+This latter point is what can drive a collaborator crazy: some \LaTeX{} editors look for \textbackslash\texttt{begin}--\textbackslash\texttt{end} pairs to identify math mode and highlight text in a helpful way. Macros like \texttt{be} and \texttt{ee} screw this up and can lead to linter warnings. In summary, do not define macros to simplify environments.
 
 
 \subsection{Labels}
@@ -123,19 +125,19 @@ Labels should be descriptive, even if that means that they labels become a bit l
 \label{sec:introduction:past:work}
 \end{lstlisting}
 % 
-Many \LaTeXx editors have intelligent autocomplete that makes it easy to insert references to past labels, so it does not take any more time to have a lengthy label. It does, however, save time if your labels are descriptive and easy to select from a drop-down menu. 
+Many \LaTeX{} editors have intelligent autocomplete that makes it easy to insert references to past labels, so it does not take any more time to have a lengthy label. It does, however, save time if your labels are descriptive and easy to select from a drop-down menu. 
 
 
 \subsection{Collaborative writing}
 
-A key principle of \LaTeXx source should be making the document collaboration-friendly. It is \emph{not} sufficient that your \LaTeXx source compiles. Your code needs to be:
+A key principle of \LaTeX{} source should be making the document collaboration-friendly. It is \emph{not} sufficient that your \LaTeX{} source compiles. Your code needs to be:
 \begin{enumerate}
 	\item \textbf{Readable}. Use white space in a consistent way to reflect the underlying structure of your document and your expressions. Use consistent spacing between sections and subsections. Use ample white space within an equation to make each piece easy to identify. 
 	\item \textbf{Editable}. Collaborators should be able to fix typos without having to do a deep dive of your source ode. 
 \end{enumerate}
 Here's what you are allowed to sacrifice in order to meet these goals:
 \begin{enumerate}
-	\item Your source code does not need to be short. Nobody will print out our source file. An equation that typesets to a single line can be spread out over a dozen lines if it helps the reader parse the \LaTeXx. 
+	\item Your source code does not need to be short. Nobody will print out our source file. An equation that typesets to a single line can be spread out over a dozen lines if it helps the reader parse the \LaTeX{}. 
 	\item Your source code does not need to be confined to a single file. 
 	\item Your figures should be in a separate folder. In this template we use:
 % 
@@ -146,9 +148,9 @@ Here's what you are allowed to sacrifice in order to meet these goals:
 	\item Your pose writing---that is, writing that is not in math mode---can also be broken up using empty lines (comment out the line to avoid starting a new paragraph) and white space in order to elucidate the structure.\footnote{This can be useful if you tend to write convoluted sentences. You can `diagram' your sentence so that you see how each clause fits together.}
 \end{enumerate}
 
-A good way to collaborate is to use \texttt{git}/\texttt{github} or {Overleaf}. Overleaf is fantastic for abstracting away all version control. However, savvy users with an Overleaf membership can connect to Overleaf documents using \texttt{git}. This gives you the best of both worlds: you may use your favorite \acro{IDE} or \LaTeXx editor and your favorite \texttt{git} client to synchronize to an Overleaf document that your collaborators can edit through the web interface if they wish.\footnote{You may notice that there is a \texttt{gitignore.txt} file in this template. It is a copy of the \texttt{.gitignore} file used by \texttt{git}. The \acro{macOS} interface does not like it when users try to manipulate files named dot-something since it worries that you might be messing up an important system file. Thus I have included a text file with the contents of \texttt{.gitignore} for users who simply want to copy this template folder using \acro{macOS}. You should then rename \texttt{gitignore.txt} to \texttt{.gitignore} if you are using \texttt{git}. Alternatively, download this file as a template from \texttt{github} and ignore \texttt{gitignore.txt} altogether.  }
+A good way to collaborate is to use \texttt{git}/\texttt{github} or {Overleaf}. Overleaf is fantastic for abstracting away all version control. However, savvy users with an Overleaf membership can connect to Overleaf documents using \texttt{git}. This gives you the best of both worlds: you may use your favorite \acro{IDE} or \LaTeX{} editor and your favorite \texttt{git} client to synchronize to an Overleaf document that your collaborators can edit through the web interface if they wish.\footnote{You may notice that there is a \texttt{gitignore.txt} file in this template. It is a copy of the \texttt{.gitignore} file used by \texttt{git}. The \acro{macOS} interface does not like it when users try to manipulate files named dot-something since it worries that you might be messing up an important system file. Thus I have included a text file with the contents of \texttt{.gitignore} for users who simply want to copy this template folder using \acro{macOS}. You should then rename \texttt{gitignore.txt} to \texttt{.gitignore} if you are using \texttt{git}. Alternatively, download this file as a template from \texttt{github} and ignore \texttt{gitignore.txt} altogether.  }
 
-\subsection{\texorpdfstring{\LaTeXx Style Guide}{LaTeX Style Guide}}
+\subsection{\texorpdfstring{\LaTeX{} Style Guide}{LaTeX Style Guide}}
 
 \begin{itemize}
 	\item Use \texttt{hyperref}. Modern documents should be internally and externally hyperlinked. Clicking on a reference to an equation should bring the reader to that equation. Use a bibliography style that allows hyperlinks to the \texttt{arXiv}.
