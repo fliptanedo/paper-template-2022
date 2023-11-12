@@ -1,0 +1,94 @@
+%!TEX root = paper.tex
+%% FLIP’S MACROS FOR COMMENTS
+%% USES: FlipPreamble.tex
+%%
+%% These macros are for communicating between collaborators
+%% during the editing process.
+
+%% USAGE SUMMARY: EXAMPLES
+%% -----------------------
+%% \comment{Check}{Is this equation correcT?}
+%% \comment{Flip}{I think it is correct.}
+%%
+%% \begin{flipcomment}
+%% This is a more involved comment, perhaps with equations
+%% \end{flipcomment}
+%%
+%% \comment{Flip}{Can we discuss adding this:}
+%% \new{This chunk of text is new compared to the last version}
+%%
+%% \comment{Flip}{Can we discuss removing this?}
+%% \remove{Previous version of the text that I propose removing.} 
+
+
+
+
+%% INLINE COMMENTS
+%% ---------------
+\newcommand{\comment}[2]{\textcolor{red}{[\textbf{#1}: #2]}}
+
+%% SHORT COMMENT: copy this to make your own inline comment
+\newcommand{\flip}[1]{{
+  \color{green!50!black}
+  \footnotesize
+  [\textbf{\textsf{Flip}}: \textsf{#1}]
+  }}
+
+
+%% IN-BOX COMMENMTS (for longer comments)
+%% --------------------------------------
+
+%% Define frame (mdframed package)
+\global\mdfdefinestyle{flipbox}{%
+  linecolor=green!50!black,linewidth=1pt,%
+  leftmargin=0cm, rightmargin=0cm
+  } 
+
+%% LONG COMMENT: copy this to make your own boxed comment
+\newenvironment{flipcomment}
+  {
+    \begin{mdframed}[style=flipbox] 
+    \color{green!50!black}
+    \sffamily
+    \footnotesize
+    \textbf{\textsf{Flip}}:
+  }{
+    \end{mdframed}
+  }
+
+%% Because mdframed causes a bunch of warnings
+%% https://tex.stackexchange.com/questions/64331/disable-warning-from-mdframed 
+\usepackage{silence}
+\WarningFilter{mdframed}{You got a bad break}
+\WarningFilter{mdframed}{correct box splittet fails}
+
+
+
+%% ADDING AND REMOVING TEXT
+%% ------------------------
+%% Analogous to LaTeXdiff-by-hand
+
+\newcommand{\new}[1]{{ 
+    \color{green!50!black}\footnotesize
+    [\textbf{\textsf{New}}: {#1}]}}
+
+
+%% REMOVE Environment
+%% https://tex.stackexchange.com/a/488582/8094
+%% Creates a nolabel environment that strips all labels
+%% This is useful to avoid multiple label definitions
+%% When marking old versions for deletion
+\usepackage{xparse}
+\ExplSyntaxOn
+\NewDocumentEnvironment{nolabel}{}{
+  \cs_set_eq:NN \label \use_none:n
+  \cs_set_eq:cN { ltx@label} \use_none:n
+}{}
+\ExplSyntaxOff 
+
+\newcommand{\remove}[1]{{
+  \begin{nolabel} 
+    \color{red!50!black}\footnotesize
+    [\textbf{\textsf{Removed}}: {#1}]
+    \end{nolabel}
+    }}
