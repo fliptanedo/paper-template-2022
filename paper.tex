@@ -2,11 +2,12 @@
 %% GitHub: https://github.com/fliptanedo/paper-template-2022
 
 \documentclass[12pt]{article}
+% \documentclass[12pt]{report}    %% Report has chapters
 
 \input{FlipPreamble}			%% \usepackages, formatting
 \input{FlipMacros}              %% Flip's standard macros
 \input{FlipMacros_Comments}     %% Flip's macros for comments
-% \input{FlipMacros_Teaching}     %% Flip's macros for course notes
+\input{FlipMacros_Teaching}     %% Flip's macros for course notes
 \input{FlipAdditionalHeader} 	%% Modify this for each project
 \input{Flip_listings}           %% Styling for code blocks
 \input{FlipPreambleEnd}			%% packages that have to be at the end
@@ -47,14 +48,23 @@ This is a simple template for my papers. It's not very different from the plain 
 %%%  THE CONTENT  %%%
 %%%%%%%%%%%%%%%%%%%%%
 
+% \chapter{Beginning} %% if using report class
+
 \section{Introduction}
 
-In the beginning... \lipsum[5]
+This is a template for my papers and lecture notes. The sample file includes \LaTeX{} snippets for common components of such documents. It also includes some (opinionated) suggestions for best practices when preparing a \LaTeX{} document.
+
+\paragraph{Example \emph{Lorem Ipsum} text} \lipsum[5]
 
 \input{examples}
 \input{examples_listings}
 \input{examples_bestpractices}
 \input{examples_refs}
+
+%% CHAPTER SUBAPPENDIX %% if using report class
+% \begin{subappendices}
+% \section{Parenthetical}
+% \end{subappendices}
 
 
 
