@@ -17,6 +17,7 @@
 \usepackage{bm}                 % \boldsymbol
 \usepackage{amsthm}
 \usepackage{microtype}
+\usepackage{etoolbox}           % LaTeX primitives
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  UNUSUAL PACKAGES  %%%%
@@ -78,7 +79,7 @@
 %% References in two columns, smaller
 %% http://tex.stackexchange.com/questions/20758/
 \usepackage{multicol}
-\usepackage{etoolbox}
+% \usepackage{etoolbox} %% called above
 \usepackage{relsize}
 \patchcmd{\thebibliography}
   {\list}
