@@ -16,38 +16,77 @@
 %                         % ... and discussion therein
 
 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{bigidea}{Key Idea}[section]
+    \newcommand{\bigidearef}{Key~Idea}
+    \newcommand{\bigidearefs}{Key~Ideas}
 
-\newmdtheoremenv[
-    skipabove=2em,
-    skipbelow=2em,
-    linewidth=5pt,
-    linecolor=red!50!black,
-    topline=false,
-    rightline=false,
-    bottomline=false
-    ]{exercise}{Exercise}[section]
 
-\newmdtheoremenv[
-    skipabove=2em,
-    skipbelow=2em,
-    linewidth=5pt,
-    linecolor=gray,
-    topline=false,
-    rightline=false,
-    bottomline=false
-    ]{example}{Example}[section]
+% TCOLORBOX settings
+% https://tex.stackexchange.com/a/633497/8094
+\tcolorboxenvironment{theorem}{
+    enhanced, % Skin Family `enhanced'
+    frame hidden,  % no frame
+    interior hidden, % no interior color
+    borderline west={2pt}{0pt}{gray}
+    }
 
-\newmdtheoremenv[
-    skipabove=2em,
-    skipbelow=2em,
-    linewidth=5pt,
-    linecolor=blue,
-    topline=false,
-    rightline=false,
-    bottomline=false
-    ]{bigidea}{Key Idea}[section]
-\newcommand{\bigidearef}{Key~Idea\xspace}
-\newcommand{\bigidearefs}{Key~Ideas\xspace}
+\tcolorboxenvironment{exercise}{
+    enhanced, % Skin Family `enhanced'
+    frame hidden,  % no frame
+    interior hidden, % no interior color
+    borderline west={2pt}{0pt}{red!50!black}
+    }
+
+\tcolorboxenvironment{example}{
+    enhanced, % Skin Family `enhanced'
+    frame hidden,  % no frame
+    interior hidden, % no interior color
+    borderline west={2pt}{0pt}{green!50!black}
+    }
+
+\tcolorboxenvironment{bigidea}{
+    enhanced, % Skin Family `enhanced'
+    frame hidden,  % no frame
+    interior hidden, % no interior color
+    borderline west={2pt}{0pt}{blue!50!black}
+    }
+
+% OLD: mdframed package
+
+% \newmdtheoremenv[
+%     skipabove=2em,
+%     skipbelow=2em,
+%     linewidth=5pt,
+%     linecolor=red!50!black,
+%     topline=false,
+%     rightline=false,
+%     bottomline=false
+%     ]{exercise}{Exercise}[section]
+
+% \newmdtheoremenv[
+%     skipabove=2em,
+%     skipbelow=2em,
+%     linewidth=5pt,
+%     linecolor=gray,
+%     topline=false,
+%     rightline=false,
+%     bottomline=false
+%     ]{example}{Example}[section]
+
+% \newmdtheoremenv[
+%     skipabove=2em,
+%     skipbelow=2em,
+%     linewidth=5pt,
+%     linecolor=blue,
+%     topline=false,
+%     rightline=false,
+%     bottomline=false
+%     ]{bigidea}{Key Idea}[section]
+% \newcommand{\bigidearef}{Key~Idea\xspace}
+% \newcommand{\bigidearefs}{Key~Ideas\xspace}
 
 %% AMS Theorem version
 % \newtheorem{exercise}{Exercise}[section]

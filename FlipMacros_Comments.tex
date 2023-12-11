@@ -25,7 +25,9 @@
 
 %% INLINE COMMENTS
 %% ---------------
-\newcommand{\comment}[2]{\textcolor{red}{[\textbf{#1}: #2]}}
+%% \comment is now multiply defined with \usepackage[most]{tcolorbox}
+% \newcommand{\comment}[2]{\textcolor{red}{[\textbf{#1}: #2]}}
+\newcommand{\acomment}[2]{\textcolor{red}{[\textbf{#1}: #2]}}
 
 %% SHORT COMMENT: copy this to make your own inline comment
 \newcommand{\flip}[1]{{
@@ -34,33 +36,55 @@
   [\textbf{\textsf{Flip}}: \textsf{#1}]
   }}
 
-
-%% IN-BOX COMMENMTS (for longer comments)
-%% --------------------------------------
-
-%% Define frame (mdframed package)
-\global\mdfdefinestyle{flipbox}{%
-  linecolor=green!50!black,linewidth=1pt,%
-  leftmargin=0cm, rightmargin=0cm
-  } 
+%% IN-BOX COMMENTS (for longer comments)
+%% -------------------------------------
+% Uses: tcolorbox
 
 %% LONG COMMENT: copy this to make your own boxed comment
 \newenvironment{flipcomment}
   {
-    \begin{mdframed}[style=flipbox] 
-    \color{green!50!black}
-    \sffamily
-    \footnotesize
-    \textbf{\textsf{Flip}}:
+    \begin{tcolorbox}[
+      title=Flip Comment,
+      fonttitle=\bfseries\sffamily,
+      colframe=green!50!black,
+      colback=white
+      ]
+    \small
   }{
-    \end{mdframed}
+    \end{tcolorbox}
   }
 
-%% Because mdframed causes a bunch of warnings
-%% https://tex.stackexchange.com/questions/64331/disable-warning-from-mdframed 
-\usepackage{silence}
-\WarningFilter{mdframed}{You got a bad break}
-\WarningFilter{mdframed}{correct box splittet fails}
+
+
+
+%% MDFRAMED 
+
+% %% IN-BOX COMMENMTS (for longer comments)
+% %% --------------------------------------
+
+% %% Define frame (mdframed package)
+% \global\mdfdefinestyle{flipbox}{%
+%   linecolor=green!50!black,linewidth=1pt,%
+%   leftmargin=0cm, rightmargin=0cm
+%   } 
+
+% %% LONG COMMENT: copy this to make your own boxed comment
+% \newenvironment{flipcomment}
+%   {
+%     \begin{mdframed}[style=flipbox] 
+%     \color{green!50!black}
+%     \sffamily
+%     \footnotesize
+%     \textbf{\textsf{Flip}}:
+%   }{
+%     \end{mdframed}
+%   }
+
+% %% Because mdframed causes a bunch of warnings
+% %% https://tex.stackexchange.com/questions/64331/disable-warning-from-mdframed 
+% \usepackage{silence}
+% \WarningFilter{mdframed}{You got a bad break}
+% \WarningFilter{mdframed}{correct box splittet fails}
 
 
 
