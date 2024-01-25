@@ -345,11 +345,17 @@ On the right we use \verb$\right)^{\!d+1}$.
 
 \subsection{Ties create non-breaking spaces}
 
-\LaTeX{} interprets periods as full stops (end of a sentence). It places extra space after the full stop. Use a \textbf{tie} (tilde) when a period is not a full stop: Mr.~Roboto versus Mr. Roboto. 
+\LaTeX{} interprets periods as full stops (end of a sentence). It places extra space after the full stop. Use a \textbf{normal space} right after the period, \verb!.\ ! (``slash space'') to tell \LaTeX{} that a period is not a full stop and that it should insert insert a normal space not a double space.\footnote{The double space is sometimes considered old fashioned. You can use \texttt{frenchspacing} in your document to turn off the double space after a full stop.} Mr.\ Roboto versus Mr. Roboto. 
+
+
+% Use a \textbf{tie} (tilde) when a period is not a full stop: Mr.~Roboto versus Mr. Roboto. 
+A related construction is a \textbf{tie} (tilde). This gives \textbf{non-breaking space} which is a normal space that \LaTeX{} interprets as `part of the word'. This means that line breaks should not occur along the non-breaking space.
 % 
 You can also use ties this whenever you want to prevent a line break between words. \LaTeX{} interprets the tied words as a single word.
 % 
-Ties are also standard for citations: \verb!Tanedo et al.~\cite{citation}!.
+Ties are also standard for citations: \verb!Tanedo et al.~\cite{citation}!. 
+
+
 
 
 \section{Some Best Practices}
