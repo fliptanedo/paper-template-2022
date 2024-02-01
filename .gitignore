@@ -3,6 +3,7 @@
 *.pdf
 !/figures/*
 OLD/
+References/
 
 # LATEX
 *.aux

@@ -1,10 +1,16 @@
 \documentclass[12pt]{article}
 \newcommand{\FlipTR}{}
-\input{FlipPreamble}
+
+\input{FlipPreamble}            %% \usepackages, formatting
+\input{FlipMacros}              %% Flip's standard macros
+\input{FlipMacros_Comments}     %% Flip's macros for comments
+% \input{FlipMacros_Teaching}     %% Flip's macros for course notes
+% \input{Flip_listings}           %% Styling for code blocks
 % \input{FlipAdditionalHeader} %% Use this define additional macros
-% In place of bibliography
+%% In place of bibliography
 \newcommand{\arxiv}[1]{\href{https://arxiv.org/abs/#1}{\texttt{#1}}}
-\input{FlipPreambleEnd}
+\input{FlipPreambleEnd}         %% packages that have to be at the end
+
 
 
 \begin{document}
@@ -12,7 +18,7 @@
 \thispagestyle{empty}		% default if no preprint #
 
 \begin{center}
-    {\huge \textbf{Clever Paper Title} \par}
+    {\huge \textbf{Clever Note Title} \par}
 \end{center}
 
 

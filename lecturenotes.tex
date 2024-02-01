@@ -1,0 +1,285 @@
+%% LaTeX Paper Template, Flip Tanedo (flip.tanedo@ucr.edu)
+%% GitHub: https://github.com/fliptanedo/paper-template-2022
+
+% \documentclass[11pt]{article} %% Not for Lecture Notes
+\documentclass[12pt, oneside]{report}    %% Has chapters
+
+
+% \PassOptionsToPackage{font={small, sf}}{caption}
+
+\input{FlipPreamble}			%% \usepackages, formatting
+\input{FlipMacros}              %% Flip's standard macros
+\input{FlipMacros_Comments}     %% Flip's macros for comments
+\input{FlipMacros_Teaching}     %% Flip's macros for course notes
+\input{FlipAdditionalHeader} 	%% Modify this for each project
+\input{Flip_listings}           %% Styling for code blocks
+\input{FlipLectureMacros}       %% Lecture note formatting
+
+\usepackage{sidenotes}  %% no longer maintained
+\renewcommand*\thesidenote{\alph{sidenote}}  %% sidenotes indexed letters
+
+% Reset sidenote numbering
+\let\oldchapter\chapter
+\def\chapter{%
+  \setcounter{sidenote}{1}%
+  \oldchapter
+}
+
+
+%% Sidenote font and size
+%% PART I: https://tex.stackexchange.com/a/536083/8094
+%% n.b. a/532251/8094 broke the sidenote floating
+    \usepackage{xparse}
+    \let\oldmarginpar\marginpar
+    \RenewDocumentCommand{\marginpar}{om}{%
+      \IfNoValueTF{#1}
+        {\oldmarginpar{\mymparsetup #2}}
+        {\oldmarginpar[\mymparsetup #1]{\mymparsetup #2}}}
+
+    %% Old answer in a/532251/8094 makes all sidenotes marginnotes
+    %% New answer (above) uses marginpar 
+    % \renewcommand*{\marginfont}{\sffamily}    % Old
+    \newcommand{\mymparsetup}{\scriptsize\sffamily}        % New, using xparse
+    % \renewcommand{\sidecaption}{\scriptsize\sffamily}
+
+
+%% Sans Serif Font Option for Sidenote
+\usepackage[thin, scaled=1]{FiraSans} 
+
+
+% Define lecture note geometry
+\geometry{
+    paper=letterpaper, 
+    hmargin={1cm,7.25cm}, 
+    vmargin={2cm,2cm}, 
+    marginparsep=.5cm, 
+    marginparwidth=5.75cm
+}
+
+%% If we need to use the full page
+\usepackage{changepage}
+\newenvironment{wide}{\begin{adjustwidth}{0cm}{-6.25cm}}{\end{adjustwidth}}
+% NOTE: 6.25cm is to match the hmargin difference
+
+
+% \usepackage{sidecap}
+% \sidecaptionvpos{figure}{t}
+
+% \usepackage[font=scriptsize,format=,labelfont={bf,sf},width=10pt]{caption}
+
+\DeclareCaptionStyle{sidecaption}{font={sf,footnotesize}}
+
+
+
+\input{FlipPreambleEnd}			%% packages that have to be at the end
+
+% \usepackage[font={small, sf}]{caption}
+% For editing
+% \linenumbers                  %% print line numbers (lineno package)
+
+\graphicspath{{figures/}}       %% figure folder
+
+
+
+
+% NOTES: to implement
+% https://www.overleaf.com/latex/examples/footnote-citations-with-biblatex/sdnfkjhrnpkp
+% but biblatex is a pain... no comparable style to utcaps
+% https://tex.stackexchange.com/questions/12806/guidelines-for-customizing-biblatex-styles
+
+% \captionsetup[figure*]{font={footnotesize,sf}}
+% For figure*  and marginfigure
+\DeclareCaptionStyle{widefigure}{font={footnotesize,sf}}
+
+\begin{document}
+
+\newgeometry{margin=2cm}                   % plain geometry for frontmatter
+\newcommand{\FlipTR}{UCR-TR-2024-FLIP-00X} % TR#, pdfsync may fail on 1st page
+\thispagestyle{firststyle} 	               % TR#; otherwise use \thispagestyle{empty}
+\pagenumbering{gobble}                     % no page number on first page 
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  FRONTMATTER    %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{center}
+    {\large \textsc{UC Riverside Physics XXX, Fall 20YY} \par}
+    {\huge \textbf{Course Title} \par}\vspace{.5em}
+    {\large {Descriptive subtitle} \par}
+    \vskip .5cm
+    \input{FlipAuthors}
+\end{center}
+
+\vspace{2em}\noindent
+Course description, abstract for lecture notes, etc. \lipsum[5]
+
+\vspace{2em}
+\noindent
+{Last Compiled: \today}
+
+\noindent % Course notes URL
+% \url{https://github.com/fliptanedo/P231-2023-Math-Methods}
+
+%% Front page logos
+\vspace*{\fill}
+\begin{center}
+\includegraphics[height=.1\textwidth]{figures/FlipAmbigram.png}
+\hspace{5em}
+\includegraphics[height=.1\textwidth]{figures/UCRPnA_banner.png}
+\end{center}
+
+\newpage
+
+\small
+\setcounter{tocdepth}{2}
+\tableofcontents
+\normalsize
+\clearpage
+\restoregeometry        %% Return to lecture note geometry 
+\pagenumbering{arabic}  %% Turn on regular page numbers
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  THE CONTENT  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Lecture Note Demonstration} %% if using report class
+
+
+\section{Vision}
+
+This document is inspired by Edward Tufte by way of the \texttt{tufte-latex} package. The notes have a large margin for side notes and floats (e.g.\ figures).  Visually this means that the column of main text is narrower, which permits a slightly smaller font.\begin{marginfigure}%[th]
+    % \centering
+    \includegraphics[width=.8\textwidth]{example-image-golden}
+    \captionsetup{font={scriptsize,sf}}
+    \caption{Example of a margin figure.}
+    \label{fig:figure:example:golden}
+\end{marginfigure}
+
+% \lipsum[2]
+
+\section{Using the Margin}
+
+We implement marginalia with the \texttt{sidenotes} package. We highlight the main usage here. A standard sidenote uses \verb!\sidenote{...}! and looks like this\sidenote{Test of a sidenote. Let's add some extra text here to demonstrate the following point about non-overlapping notes}. Unlike \verb!marginnote!s, \verb!sidenotes! do not overlap with each other.\sidenote{An example of a sidenote that does not overlap with the previous one.} What more, the sidenotes coexist fine with footnotes.\footnote{Here is a foot note.}.
+
+\paragraph{Figures} You can place entire figure floats in the main text region or in the margin. Fig.~\ref{fig:figure:example:golden} is a good example.
+
+All we did was take \texttt{figure}$\rightarrow$\texttt{marginfigure}. You can do the same thing with \texttt{margintable}. On the other hand, sometimes you want a figure that spans the entire text width. To do this, we simply use the \texttt{figure*} environment. We demonstrate this in Fig.~\ref{fig:subfigure:example:lec}.
+\begin{figure*}%[th]
+    \centering
+    \begin{subfigure}{0.3\linewidth}
+    \centering
+        \includegraphics[width=\linewidth]{example-image-a}
+        \caption{First subfig}
+        \label{fig:subfig:1:lec}
+    \end{subfigure}\;%
+    \begin{subfigure}{0.3\linewidth}
+    \centering
+        \includegraphics[width=\linewidth]{example-image-a}
+        \caption{Second subfig}
+        \label{fig:subfig:2:lec}
+    \end{subfigure}\;%
+    \begin{subfigure}{0.3\linewidth}
+    \centering
+        \includegraphics[width=\linewidth]{example-image-a}
+        \caption{Third subfig}
+        \label{fig:subfig:3:lec}
+    \end{subfigure}%
+    % \captionsetup{font={footnotesize,sf}}
+    \caption{Here's how to spread a figure across the entire page, not just the main text width. \lipsum[1]}
+    \label{fig:subfigure:example:lec}
+\end{figure*}
+
+If we want something in between, we can place the figure in the main text and then place the figure caption in the margin notes. 
+\begin{figure}%[th]
+    % \centering
+    \sidecaption[][-2\baselineskip]{Example of a margin figure. \lipsum[3]}
+    \includegraphics[width=\textwidth]{example-image-golden}
+    \label{fig:figure:example:golden:sidecap}
+\end{figure}
+
+
+\section{Breaking the Margin}
+
+
+We define an environment \texttt{wide} that allows text, like equations, to spill into the margins. For example:
+\begin{wide}
+\begin{align}
+f &= \sin\mleft(\frac{x^2}{2}\mright)
+\times \arctan t 
+\times \log \mleft(\cos \theta\mright)
+\times \int_a^b \D{}x \exp\mleft(a^1 + b^2 + x^2\mright)
+\times e^{-i\pi} 
+\times \Gamma(n) 
+\times _{n\!}\text{C}_m
+\end{align}
+\end{wide}
+\begin{wide}
+The definition of the margin spillover in \texttt{wide} needs to be matched to the size of the margin defined with the \texttt{geometry} package.
+Here's what normal text looks like.  \lipsum[2]
+... just don't mix this with sidenotes. 
+\end{wide}
+
+
+% Here's a sentence with some citations.\sidenote[a]{\footnotesize \textsf{And another note. Can I make this text smaller.}}\sidenote[a]{Another}\lipsum[1]
+
+Here's a sentence with some citations.\sidenote{
+    \scriptsize\lipsum[10]}
+
+\lipsum[1]\sidenote{Another} \lipsum[1]
+
+% And here's a sentence. \marginnote{\footnotesize \textsf{And another note. Can I make this text smaller.}}
+% \marginnote{Here's another one}
+
+% What I'm working on:
+% % https://ctan.math.illinois.edu/macros/latex/contrib/sidenotesplus/tests-sidenoteplus.pdf
+% % https://damitr.org/2020/03/10/sidenotes-and-label-in-latex/
+
+\paragraph{Example \emph{Lorem Ipsum} text} \lipsum[5]
+
+% \input{examples}
+% \input{examples_teaching}
+% \input{examples_listings}
+% \input{examples_bestpractices}
+% \input{examples_refs}
+
+%% CHAPTER SUBAPPENDIX %% if using report class
+% \begin{subappendices}
+% \section{Parenthetical}
+% \end{subappendices}
+
+
+\chapter{New chapter}
+
+\lipsum[1]
+\sidenote{Another} \lipsum[1]\footnote{footnote}
+
+\section*{Acknowledgments}
+
+\acro{PT}\ thanks 
+\emph{your name here}
+for useful comments and discussions. 
+%
+\acro{PT} thanks 
+    the Aspen Center for Physics (\acro{NSF} grant \acro{\#1066293})
+    % and the Kavli Institute for Theoretical Physics (\acro{NSF} grant \acro{PHY-1748958})`'
+    for 
+    its 
+    % their
+    hospitality during a period where part of this work was completed. 
+%
+% \acro{PT} is supported by the \acro{DOE} grant \acro{DE-SC}/0008541.
+\acro{PT} is supported by a \acro{NSF CAREER} award (\#2045333).
+
+%% Appendices
+% \appendix
+
+
+%% Bibliography
+%% Use inspireHEP bibtex entries when possible
+\bibliographystyle{utcaps} 	% arXiv hyperlinks, preserves caps in title
+% \bibliography{bib title without .bib}
+
+
+\end{document}
