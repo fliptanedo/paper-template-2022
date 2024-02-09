@@ -5,7 +5,23 @@
 \documentclass[12pt, oneside]{report}    %% Has chapters
 
 
-% \PassOptionsToPackage{font={small, sf}}{caption}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% BibLaTeX does not want the cite package
+%% from: https://tex.stackexchange.com/a/39418/8094
+\makeatletter
+\newcommand{\disablepackage}[2]{%
+  \disable@package@load{#1}{#2}%
+}
+\newcommand{\reenablepackage}[1]{%
+  \reenable@package@load{#1}%
+}
+\makeatother
+% 
+\disablepackage{cite}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \input{FlipPreamble}			%% \usepackages, formatting
 \input{FlipMacros}              %% Flip's standard macros
@@ -69,6 +85,9 @@
 
 \DeclareCaptionStyle{sidecaption}{font={sf,footnotesize}}
 
+% BIBLATEX: for foot citations
+\usepackage[style=verbose]{biblatex}
+\addbibresource{FlipBib.bib}
 
 
 \input{FlipPreambleEnd}			%% packages that have to be at the end
@@ -252,8 +271,14 @@ Here's a sentence with some citations.\sidenote{
 
 \chapter{New chapter}
 
+Test cite\autocite{Feng:2016ijc}
 \lipsum[1]
+And cite again\autocite{Feng:2016ijc}.
 \sidenote{Another} \lipsum[1]\footnote{footnote}
+
+\section{And more stuff}
+\lipsum[3]
+And cite again\autocite{Feng:2016ijc}.
 
 \section*{Acknowledgments}
 
@@ -277,8 +302,9 @@ for useful comments and discussions.
 
 
 %% Bibliography
+%% USING BIBLATEX, SKIP BIBTEX
 %% Use inspireHEP bibtex entries when possible
-\bibliographystyle{utcaps} 	% arXiv hyperlinks, preserves caps in title
+% \bibliographystyle{utcaps} 	% arXiv hyperlinks, preserves caps in title
 % \bibliography{bib title without .bib}
 
 
