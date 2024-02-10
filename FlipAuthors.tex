@@ -1,11 +1,14 @@
 %!TEX root = paper.tex
 %% Update the above with the appropriate root
 
-%% This is the author list
-%% We separate it to keep the main file clean; this is
-%% not the part of the document that gets updated often.
+%% AUTHOR LIST: separated to keep main file clean
+%% This is not part of the document that is updated often.
 
 %% Multi line institution?  Use \phantom{$^{c}$\,}
+
+%%%%%%%%%%%%%%%
+%%  AUTHORS  %%
+%%%%%%%%%%%%%%%
 
 \newcommand{\authorA}{Flip Tanedo}
 \newcommand{\emailA}{flip.tanedo@ucr.edu}
@@ -13,7 +16,7 @@
 \newcommand{\institutionA}{
 		Department of Physics \& Astronomy, 
 	    University of  California, Riverside, 
-	    \acro{CA} 92521}
+	    \normalfont{CA} 92521, \normalfont{USA}}
 
 \newcommand{\authorB}{Your Name}
 \newcommand{\emailB}{your.name@ucr.edu}
@@ -21,37 +24,23 @@
 \newcommand{\institutionB}{
 		Department of Physics \& Astronomy, 
 	    University of  California, Elsewhere, 
-	    \acro{CA} 99999}
+	    \normalfont{CA} 99999, \normalfont{USA}}
 
 \newcommand{\authorC}{Tu Nombre}
 \newcommand{\emailC}{tu.nombre@ucr.edu}
 \newcommand{\orcidC}{0000-0003-4642-2201}
 \newcommand{\institutionC}{
-		Department of Physics \& Astronomy, 
-	    University of  California, Elsewhere, 
-	    \acro{CA} 99999}
-
-	% \textbf{\authorA}%$^{a}$,
-	% % \textbf{\authorB}$^{b}$,
-	% % and
-	% % \textbf{\authorC}$^{c}$, 
-	% \\ 
-	% \texttt{\footnotesize \email{\emailA}}~\orcidlink{\orcidA}%,
-	% % \texttt{\footnotesize \email{\emailB}}~\orcidlink{\orcidB},
-	% % \texttt{\footnotesize \email{\emailC}}~\orcidlink{\orcidC}
-
-	% \vspace{-.8em}
-    % \begin{institutions}[1.7cm]
-    % \footnotesize
-    % { 
-    % 	% $^{a}$
-    % 	\textit{\institutionA} 
-    % 	% \\ $^{b}$ \textit{\institutionB} 
-    % 	% \\ $^{c}$ \textit{\institutionC} 
-	% }    
-    % \end{institutions}
+		Department of Physics \& Astronomy
+		and
+		Institute of Some Long-Named Topic, 
+		\\ \phantom{$^{c}$\,}
+	    University of New Line, Elsewhere City, 
+	    \normalfont{XY} 99999, \normalfont{USA}}
 
 
+%%%%%%%%%%%%%%%%%%
+%%  FORMATTING  %%
+%%%%%%%%%%%%%%%%%%
 
 \begin{center}
 	\textbf{\authorA}$^{a}$,
@@ -68,7 +57,7 @@
 
 % quotation environment is same width as abstract
 \begin{quotation}\noindent
-\footnotesize
+	\footnotesize
 	\noindent$^{a}$
 	\textit{\institutionA} 
 	\\ $^{b}$ \textit{\institutionB} 
