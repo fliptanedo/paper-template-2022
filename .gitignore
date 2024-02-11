@@ -35,6 +35,9 @@ References/
 *.synctex.gz
 *.toc
 *.xdv
+*.bcf
+*.xml
+*.listing
 
 # Sublime
 *.sublime-project

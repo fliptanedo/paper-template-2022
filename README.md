@@ -63,3 +63,9 @@ For those, like me, are less competent with `git` and GitHub than we really augh
    ```
 
 7. Go ahead and start your new project.
+
+
+# Samples includes
+* `paper.tex` is a standard manuscripty
+* `Short.tex` is for a brief note 
+* `lecturenotes.tex` is for a long set of lecture notes

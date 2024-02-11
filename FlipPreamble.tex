@@ -1,8 +1,7 @@
 %!TEX root = paper.tex
 %% FLIP’S PREAMBLE; 
 %% Use FlipAdditionalHeader for project-specific packages & macros
-
-% \pdfoutput=1 % for JHEP
+%% Leave this as general as possible
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  COMMON PACKAGES  %%%%
@@ -41,13 +40,10 @@
 
 \usepackage{fancyhdr}		% preprint number
 \usepackage{lipsum}			% block of text 
-% \usepackage{framed}			% boxed remarks / better: mdframed 
-% \usepackage{mdframed}   % replace framed
-% \usepackage{tcolorbox}  % replace mdframed
+% \usepackage{tcolorbox}  % replace framed and mdframed
 \usepackage[most]{tcolorbox} % `most' needed for listings
 \usepackage{subcaption}	% subfigures
 \usepackage{cite}			  % group cites
-% \usepackage{xspace}			% macro spacing %% depreciated
 \usepackage{wrapfig}    
 
 %% TABLES IN LaTeX
@@ -71,6 +67,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[margin=2.5cm]{geometry} % margins
+\usepackage{changepage}             % overwrite geometry (e.g. lecturenotes)
 \numberwithin{equation}{section}    % set equation numbering
 \usepackage{marginnote}             % for \marginnote{comment}
 % \usepackage{mparhack}               % fix for \marginnote
