@@ -127,8 +127,9 @@
     {\huge \textbf{Course Title} \par}\vspace{.5em}
     {\large {Descriptive subtitle} \par}
     \vskip .5cm
-    \input{FlipAuthors}
 \end{center}
+
+\input{FlipAuthors}
 
 \vspace{2em}\noindent
 Course description, abstract for lecture notes, etc. \lipsum[5]
@@ -269,6 +270,55 @@ Here's a sentence with some citations.\sidenote{
 % \end{subappendices}
 
 
+\chapter{More examples}
+
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{exercise}{Exercise}[section]
+% \newtheorem{example}{Example}[section]
+% \newtheorem{bigidea}{Key Idea}[section]
+%     \newcommand{\bigidearef}{Key~Idea}
+%     \newcommand{\bigidearefs}{Key~Ideas}
+
+\section{Some common environments}
+
+\begin{theorem}[Euler's Identity]
+\label{thm:euler:identity}
+    Euler's identity is
+    \begin{align}
+        \e^{i\pi} = -1 \ .
+    \end{align}
+    Note that we use the macro \verb!\e! for an upright $\e$ rather than an italicized $e$.
+\end{theorem}
+
+\begin{exercise}
+\label{ex:derive:euler:identity}
+    Derive Euler's identity, Thm.~\ref{thm:euler:identity}.
+\end{exercise}
+
+\noindent Good students do the exercises, like Exercise~\ref{ex:derive:euler:identity}. Good instructors provide lots of examples, like Example~\ref{eg:easy:example}.
+
+\begin{example}
+\label{eg:easy:example}
+    Consider the geometric series
+    \begin{align}
+        S = \sum_{n=0} a^n \ .
+    \end{align}
+    We can find a closed form expression for $S$ using
+    \begin{align}
+        S - aS &= 1\\
+        S &= \frac{1}{1-a} \ .
+    \end{align}
+\end{example}
+
+\section{Some specialized environments}
+
+\begin{bigidea}[Principle of Easy Examples]
+\label{idea:easy:examples}
+Don't you hate it when the examples are so much easier than the exercises?
+\end{bigidea}
+
+\noindent The \bigidearef{}~\ref{idea:easy:examples} is one we may want to refer to later.
+
 \chapter{New chapter}
 
 Test cite\autocite{Feng:2016ijc}
@@ -279,6 +329,10 @@ And cite again\autocite{Feng:2016ijc}.
 \section{And more stuff}
 \lipsum[3]
 And cite again\autocite{Feng:2016ijc}.
+
+
+\chapter{Anther chapter}
+\lipsum[3]\autocite{Feng:2016ijc}
 
 \section*{Acknowledgments}
 
