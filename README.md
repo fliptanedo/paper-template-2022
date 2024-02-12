@@ -7,6 +7,9 @@ A LaTeX paper template that I use for papers and notes. Replaces [2021 version](
 
 By Flip Tanedo (flip.tanedo@ucr.edu)
 
+License: CC BY-NC-SA 4.0
+https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
+
 ## Other packages used
 
 I include these files in this repository.
