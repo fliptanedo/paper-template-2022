@@ -51,6 +51,7 @@ rather than the \texttt{center} environment in figure environments to avoid addi
 
 \subsection{Figures in Equation Environments}
 \label{sec:figs}
+A trick with: \verb!\eqfig{example-image-a}{width=.1\textwidth}!. This is a command that we define in \texttt{FlipMacros.tex}.
 
 \begin{align}
 	\vcenter{
@@ -74,9 +75,11 @@ rather than the \texttt{center} environment in figure environments to avoid addi
 	ig  \ . 
 	\label{eq:scalar}
 	\\
-	\vcenter{
-		\hbox{\includegraphics[width=.1\textwidth]{{example-image-a}}}
-		}
+	% \vcenter{
+	% 	\hbox{\includegraphics[width=.1\textwidth]{{example-image-a}}}
+	% 	}
+	%% Shortcut: use \eqfig command
+	\eqfig{example-image-a}{width=.1\textwidth}
 	&=
 	g \gamma^5 \ . 
 	\label{eq:pseudo}
@@ -218,6 +221,10 @@ This is essentially a manual version of the \texttt{latexdiff} command. This com
 \begin{flipcomment}
 This is an extended comment that shows up as a text box. I might use this to make some ponderous point about why I think my version of a draft paragraph is more appropriate than yours.
 \end{flipcomment}
+
+\begin{boxedcomment}{Custom Title}
+You can also define boxes that take customized titles. 
+\end{boxedcomment}
 
 
 \subsection{\texorpdfstring{\texttt{xspace}}{xspace}}

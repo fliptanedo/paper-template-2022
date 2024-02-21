@@ -95,3 +95,9 @@
   \newcommand{\cmark}{\ding{51}}%
   \newcommand{\xmark}{\ding{55}}%
 
+
+%% FIGURES INLINE WITH EQUATIONS (e.g. Feynman diagrams)
+%% -----------------------------
+\newcommand{\eqfig}[2]{%
+  \vcenter{\hbox{\includegraphics[#2]{{#1}}}}}
+%% USAGE: \eqfig{example-image-a}{width=.1\textwidth}
