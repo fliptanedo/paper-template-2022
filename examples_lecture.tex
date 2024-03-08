@@ -62,12 +62,15 @@ We can place large figures in the main text and then place the figure caption in
     \includegraphics[width=\textwidth]{example-image-golden}
 \end{figure}
 
+
 \section{Other types of marginalia}
 
-Sometimes you can use \texttt{marginnote} to place a note without a marking.\marginnote{See?} Note that \texttt{marginnote} does not, by default, use the same font as \texttt{sidenote}, so we had to set this in the preamble (\texttt{FlipLectureMacros.tex}).
+Sometimes you can use \texttt{marginnote} to place a note without a marking.%\marginnote{See?} 
+\sidenote{here's another}
+Note that \texttt{marginnote} does not, by default, use the same font as \texttt{sidenote}, so we had to set this in the preamble (\texttt{FlipLectureMacros.tex}). In \texttt{FlipLectureMacros} I define \verb!\sidenotenomark! which lets me write sidenotes with no mark.\sidenotenomark{Like this one!}
 
 
-Maybe we want to put another type of float in the margin?
+Maybe we want to put another type of float in the margin?\sidenote{Unfortunately, no float collision for margintables!}
 What about a table, like Table~\ref{tab:margin:Table}?
 % 
 \begin{margintable}[-1em]

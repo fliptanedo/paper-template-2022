@@ -7,6 +7,7 @@
 % \usepackage{scalefnt} 
 % \newcommand\acro[1]{{\footnotesize #1}} 
 \newcommand\acro[1]{{\small{#1}}} 
+\newcommand\tacro[1]{\textsc{\lowercase{#1}}}  % for inside headers
 
 
 %% COMMON PHYSICS MACROS
@@ -19,6 +20,10 @@
 \newcommand{\CC}{\mathbbm{C}}
 
 \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+
+%% Particle Physics
+%% -----------------
+\newcommand\GeV{\acro{GeV}} 
 
 %% LINEAR ALGEBRA
 %% ---------------

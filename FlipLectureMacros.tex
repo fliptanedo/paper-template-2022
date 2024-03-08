@@ -52,6 +52,7 @@
   \oldchapter
 }
 
+
 %% Sidenote font and size
 %% PART I: https://tex.stackexchange.com/a/536083/8094
 %% n.b. a/532251/8094 broke the sidenote floating
@@ -74,6 +75,8 @@
 %% and see sidenotes documentation:
 %% marginnote is a way to place notes with no mark
 \renewcommand*{\marginfont}{\scriptsize\sffamily} 
+
+\newcommand{\sidenotenomark}[1]{\sidenote[\phantom{.}]{\hspace*{-.5em}#1}}
 
 
 
