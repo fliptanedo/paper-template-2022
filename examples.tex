@@ -8,9 +8,10 @@
 \begin{figure}%[th]
     \centering
     \includegraphics[width=0.4\textwidth]{example-image-a}
-    \caption{The figure environment shows up often.}
-    \label{fig:figure:example}
-\end{figure}
+    \caption[The figure environment shows up often. Here's a trick for footnotes in a floating caption.]{The figure environment shows up often. Here's a trick for footnotes in a floating caption.\footnotemark
+    \label{fig:figure:example}}
+\end{figure} 
+\footnotetext{Use the command \texttt{footnotemark} inside the caption then the command \texttt{footnotetext} just outside the environment. This requires the caption to have an optional argument that contains the text that should show up in a list of figures.}
 
 
 \begin{figure}%[th]
@@ -222,7 +223,7 @@ This is essentially a manual version of the \texttt{latexdiff} command. This com
 This is an extended comment that shows up as a text box. I might use this to make some ponderous point about why I think my version of a draft paragraph is more appropriate than yours.
 \end{flipcomment}
 
-\begin{boxedcomment}{Custom Title
+\begin{boxedcomment}{Custom Title}
 You can also define boxes that take customized titles. 
 \end{boxedcomment}
 
