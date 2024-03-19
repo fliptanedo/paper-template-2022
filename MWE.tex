@@ -1,0 +1,57 @@
+%!TEX program = pdflatex
+\documentclass[margin,line]{resume}
+
+\newcommand{\myDescription}[1]{%
+  \parbox{.85\textwidth}{#1}\medskip}
+
+\renewcommand{\myDescription}[1]{{#1}\medskip}
+% THE PROBLEM IS PARBOX
+
+\renewcommand{\myDescription}[1]{%
+  \parbox{.85\textwidth}{\strut #1}\medskip}
+
+
+\usepackage{parskip}
+\setlength{\parskip}{.2em}
+
+
+\begin{document}
+\name{My Name}
+\begin{resume}
+
+
+National Science Foundation {CAREER} Award\strut%
+\hfill% 
+{2021--2022}\par
+\myDescription{{NSF}'s most prestigious awards for early-career faculty with the potential to serve as academic role models in research and education and to lead advances in the mission of their department.}
+
+{NSF} Junior Faculty Excellence in Teaching Award%
+\hfill% 
+{2021}\par
+\myDescription{{NSF}'s most prestigious by the Academy of Distinguished Teaching to junior facultyr.}
+
+National Science Foundation {CAREER} Award
+\hfill% 
+{2021}\par
+\myDescription{{NSF}'s most prestigious awards for early-career faculty with the potential to serve as academic role models in research and education and to lead advances in the mission of their department.}
+
+
+National Science Foundation {CAREER} Award
+\hfill% 
+{2021}\par
+\myDescription{{NSF}'s most prestigiount.}
+
+National Science Foundation {CAREER} Award
+\hfill% 
+{2021--2022}\par
+\myDescription{{NSF}'s most prestigious awards for early-career faculty with the potential to serve as academic role models in research and education and to lead advances in the mission of their department.}
+
+Hellman Fellowship
+\hfill% 
+{2020 -- 2021}\par
+\myDescription{{NSF}'s most prestigious by the Hellman Fellows Fund to support to junior faculty who show capacity for great distinction in their research. }
+
+\end{resume}
+\end{document}
+
+  
