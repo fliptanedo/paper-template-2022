@@ -52,12 +52,20 @@ rather than the \texttt{center} environment in figure environments to avoid addi
 
 \subsection{Figures in Equation Environments}
 \label{sec:figs}
-A trick with: \verb!\eqfig{example-image-a}{width=.1\textwidth}!. This is a command that we define in \texttt{FlipMacros.tex}.
+A trick with: 
+% \verb!\eqfig{example-image-a}{width=.1\textwidth}!. 
+% 
+% \begin{quote}
+% \verb!\eqfig{\includegraphics[width=.1\textwidth]{{example-image-a}}}!
+% \end{quote}
+% 
+This is a command that we define in \texttt{FlipMacros.tex}. \flip{It may be better to define this so that users input their own includegraphics.}
 
 \begin{align}
-	\vcenter{
-		\hbox{\includegraphics[width=.1\textwidth]{{example-image-a}}}
-		}
+	% \vcenter{
+	% 	\hbox{\includegraphics[width=.1\textwidth]{{example-image-a}}}
+	% 	}
+	\eqfig{\includegraphics[width=.1\textwidth]{{example-image-a}}}
 	&=
 	i g \gamma^\mu \ . 
 	\label{eq:vector}
@@ -80,7 +88,8 @@ A trick with: \verb!\eqfig{example-image-a}{width=.1\textwidth}!. This is a comm
 	% 	\hbox{\includegraphics[width=.1\textwidth]{{example-image-a}}}
 	% 	}
 	%% Shortcut: use \eqfig command
-	\eqfig{example-image-a}{width=.1\textwidth}
+	% \eqfig{example-image-a}{width=.1\textwidth}
+	\eqfig{\includegraphics[width=.1\textwidth]{{example-image-a}}}
 	&=
 	g \gamma^5 \ . 
 	\label{eq:pseudo}

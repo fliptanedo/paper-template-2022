@@ -103,6 +103,9 @@
 
 %% FIGURES INLINE WITH EQUATIONS (e.g. Feynman diagrams)
 %% -----------------------------
-\newcommand{\eqfig}[2]{%
-  \vcenter{\hbox{\includegraphics[#2]{{#1}}}}}
-%% USAGE: \eqfig{example-image-a}{width=.1\textwidth}
+% \newcommand{\eqfig}[2]{%
+%   \vcenter{\hbox{\includegraphics[#2]{{#1}}}}}
+% %% USAGE: \eqfig{example-image-a}{width=.1\textwidth}
+\newcommand{\eqfig}[1]{%
+  \vcenter{\hbox{#1}}}
+%% USAGE: \eqfig{\includegraphics[width=.3\textwidh]{example-image-a}}
