@@ -28,6 +28,11 @@
 %% LINEAR ALGEBRA
 %% ---------------
 \newcommand{\row}[1]{\tilde{\mathbf{#1}}} % row vectors have tilde
+
+% have to compile from CTAN ("latex undertilde.ins")
+\usepackage{undertilde} 
+\renewcommand{\row}[1]{\utilde{\mathbf{#1}}}   % row vectors 
+
 \newcommand{\rbas}[1]{\row{#1}}           % row basis
 
 %% Have to compile ``latex undertilde.ins'' for this: 
@@ -49,16 +54,32 @@
 
 
 
+
 %% DIFFERENTIALS
 %% -------------
-%% Differential and differential/2pi
-% \newcommand{\dbar}{d\mkern-6mu\mathchar'26}     % for d/2pi
+%% Discouraged
 \newcommand{\dbar}{d\mkern-6mu\mathchar'26\hspace{-.1em}}    
 
-%% Best practice: Roman differential
-\newcommand{\D}[1]{\ensuremath{\operatorname{d}\!{#1}}}
-\newcommand{\DD}[2]{\ensuremath{\operatorname{d}^{#1}\!{#2}}}
-\newcommand{\Dbar}[1]{\operatorname{d}\mkern-10mu\mathchar'26\mkern-2mu{#1}} 
+%% Best practice: Roman differential with optional power
+\newcommand{\D}[2][]{\ensuremath{\operatorname{d}\mkern-3mu^{#1}\mkern-1mu{#2}}\,}
+\newcommand{\Dbar}[2][]{\operatorname{d}\mkern-10mu\mathchar'26\mkern-1mu^{#1}\mkern-1mu{#2}\,} 
+
+% %% DIFFERENTIALS: OLD
+% %% -------------
+% %% Differential and differential/2pi
+% % \newcommand{\dbar}{d\mkern-6mu\mathchar'26}     % for d/2pi
+% \newcommand{\dbar}{d\mkern-6mu\mathchar'26\hspace{-.1em}}    
+
+% %% Best practice: Roman differential
+% \newcommand{\D}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+% \newcommand{\DD}[2]{\ensuremath{\operatorname{d}^{#1}\!{#2}}}
+% \newcommand{\Dbar}[1]{\operatorname{d}\mkern-10mu\mathchar'26\mkern-2mu{#1}} 
+
+
+
+
+
+
 
 
 %% TYPOGRAPHY: Best Practices

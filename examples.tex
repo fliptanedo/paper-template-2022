@@ -311,12 +311,18 @@ If you want to be fancier, you can use \texttt{mathtools}\footnote{\url{https://
 \verb!\DeclarePairedDelimiter{\abs}{|}{|}! \, .
 
 
+\subsection{Vector notation}
+
+\begin{itemize}
+	\item Vector $\vec{v}$ and dual vector $\row{w}$.
+
+	\item Transpose: The \acro{ISO}~80000 standard has suggestions. $A^T$ vs $A^\top$ vs $A^{\trans}$. I personally prefer $A^\text{T}$.
+\end{itemize}
+
 \subsection{Miscellaneous}
 
 \begin{itemize}
 	\item Use $\mid$ instead of pipe for conditions: $p(x\mid y)$ versus $p(x|y)$.
-	% 
-	\item Transpose: The \acro{ISO}~80000 standard has suggestions. $A^T$ vs $A^\top$ vs $A^{\trans}$. I personally prefer $A^\text{T}$.
 	% 
 	\item \textbf{Textual subscripts}: sometimes you have a subscript that is not an index, but shorthand for something textual. For example, the Green's function with Dirichlet boundary conditions is $G_\textnormal{D}$. The subscript is upright, not italicized, $G_D$. Use the \texttt{textnormal} command rather than the \texttt{text} command since this will automatically use the correct size. Comparison: $G_\textnormal{D},\, G_\text{D}$.
 	% 
