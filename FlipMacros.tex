@@ -18,6 +18,8 @@
 \newcommand{\bas}[1]{\hat{\mathbf{#1}}}   % basis vectors: hat
 \newcommand{\RR}{\mathbbm{R}}
 \newcommand{\CC}{\mathbbm{C}}
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Re}}
 
 \newcommand{\abs}[1]{\left\lvert#1\right\rvert}
 
@@ -51,7 +53,7 @@
 \newcommand{\one}{\mathbbm{1}}
 \newcommand{\Tr}{\operatorname{\text{Tr}}}
 \newcommand*{\trans}{{\mkern-1.5mu\mathsf{T}}}     % transpose
-
+\newcommand{\slot}{\Vtextvisiblespace[1em]{}}   % underscore to fill in
 
 
 
@@ -63,6 +65,7 @@
 %% Best practice: Roman differential with optional power
 \newcommand{\D}[2][]{\ensuremath{\operatorname{d}\mkern-3mu^{#1}\mkern-1mu{#2}}\,}
 \newcommand{\Dbar}[2][]{\operatorname{d}\mkern-10mu\mathchar'26\mkern-1mu^{#1}\mkern-1mu{#2}\,} 
+%% USAGE: \Dbar[4]{\ell} 
 
 % %% DIFFERENTIALS: OLD
 % %% -------------
@@ -122,6 +125,7 @@
   \newcommand{\xmark}{\ding{55}}%
 
 %% extension of \textvisiblespace
+%% underscore with little tick marks
 %% usage: \Vtextvisiblespace[1em]
 %% from: https://tex.stackexchange.com/a/50807/8094
 \newcommand\Vtextvisiblespace[1][.3em]{%
