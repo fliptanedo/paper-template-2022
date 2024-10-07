@@ -112,3 +112,19 @@
 % \titleformat{\section}
 %   {\normalfont\sffamily\Large\bfseries\color{cyan}}
 %   {\thesection}{1em}{}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FORMATTING THE PART PAGE %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% https://tex.stackexchange.com/a/202324
+% Descriptive text after a Part is on the same page
+
+\usepackage{xpatch}
+\makeatletter
+\xpatchcmd{\@endpart}{\vfil\newpage}{ \vspace{1em} }{}{}
+\xpatchcmd{\@endpart}{\newpage}{}{}{}
+\makeatother
+

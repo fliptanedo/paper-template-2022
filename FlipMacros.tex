@@ -27,6 +27,21 @@
 %% -----------------
 \newcommand\GeV{\acro{GeV}} 
 
+%% SO(N), etc. 
+%% ------------
+\newcommand{\SO}[1]{\ifmmode
+  \textnormal{\acro{SO(}}#1\textnormal{\acro{)}}
+  \else \acro{SO($#1$)} \fi}
+
+\newcommand{\SU}[1]{\ifmmode
+  \textnormal{\acro{SU(}}#1\textnormal{\acro{)}}
+  \else \acro{SU($#1$)} \fi}
+
+\newcommand{\Sp}[1]{\ifmmode
+  \textnormal{\acro{Sp(}}#1\textnormal{\acro{)}}
+  \else \acro{Sp($#1$)} \fi}
+
+
 %% LINEAR ALGEBRA
 %% ---------------
 \newcommand{\row}[1]{\tilde{\mathbf{#1}}} % row vectors have tilde
