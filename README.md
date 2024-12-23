@@ -75,3 +75,4 @@ For those, like me, are less competent with `git` and GitHub than we really augh
 
 # References
 * https://github.com/joaomlourenco/novathesis/blob/main/novathesis.cls
+* https://github.com/fmarotta/kaobook

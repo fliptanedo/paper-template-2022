@@ -4,10 +4,9 @@
 
 %% FOR `NOT SHOUTING' CAPS (e.g. acronyms)
 %% ---------------------------------------
-% \usepackage{scalefnt} 
-% \newcommand\acro[1]{{\footnotesize #1}} 
-\newcommand\acro[1]{{\small{#1}}} 
-\newcommand\tacro[1]{\textsc{\lowercase{#1}}}  % for inside headers
+\usepackage{anyfontsize} % removes scalefnt warnings
+\usepackage{scalefnt}       
+\newcommand\acro[1]{{\scalefont{.95}{#1}}} 
 
 
 %% COMMON PHYSICS MACROS
