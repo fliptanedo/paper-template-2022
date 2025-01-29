@@ -3,6 +3,7 @@
 *.pdf
 !/figures/*
 OLD/
+References/
 
 # LATEX
 *.aux
@@ -34,6 +35,9 @@ OLD/
 *.synctex.gz
 *.toc
 *.xdv
+*.bcf
+*.xml
+*.listing
 
 # Sublime
 *.sublime-project
