@@ -1,5 +1,7 @@
 # Flip's Paper Template 2022
 
+This has now been replaced with my [2025 template](https://github.com/fliptanedo/paper-template-2025)
+
  `paper-template-2022`
  https://github.com/fliptanedo/paper-template-2022
 
